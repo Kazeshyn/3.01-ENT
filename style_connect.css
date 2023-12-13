@@ -1,5 +1,12 @@
 body {
+    font-family: 'M PLUS 1p', sans-serif;
     background-color: #c73939;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    height: 90vh;
+    margin: auto;
 }
 
 main {
@@ -8,15 +15,75 @@ main {
     border: 2px solid #000;
     border-radius: 25px;
     padding: 20px;
-    text-align: center;
     width: 70%;
+
 }
 
 img {
     float: left;
+    width: 70%;
     max-width: 230px;
 }
 
 h1 {
+    text-align: center;
     margin-top: 50px;
+    font-size: 2rem;
+}
+
+@media (max-width:600px){
+    h1 {
+        font-size:1.5rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+     
+    #connect {
+        margin-top: 10px;
+    }
+}
+
+form {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+
+.IdMdp {
+    margin-bottom: 25px;
+    border: 2px solid #000;
+    border-radius: 11px;
+    padding: 5px;
+}
+
+.input {
+    width: 95%;
+    height: 25px;
+    border: none;
+}
+
+.IdMdp label {
+    background-color: #FFF;
+    padding: 5px;
+    position: relative;
+    top: -19px;
+    left: 1%;
+}
+
+a {
+    color: #000;
+    font-size: 0.8rem;
+}
+
+#connect {
+    background-color: #2323A5;
+    color: #FFF;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 11px;
+    float: right;
+    margin-right: 30px;
 }
