@@ -1,3 +1,9 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'M PLUS 1p', sans-serif;
     background-color: #c73939;
