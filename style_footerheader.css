@@ -1,0 +1,61 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+body,html {
+    margin: 0;
+}
+/* Images  */
+img.logoheader {
+    height: 46.8px;
+}
+/* ------- */
+a {
+    text-align: center;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60px;
+    width: 100%;
+    background-color: #2323A5;
+}
+.headergroupphone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 5%;
+    margin-left: auto;
+}
+
+a.logoheader {
+    height: 46.8px;
+    margin-left: 2%;
+}
+
+@media (min-width: 992px) {
+    a {
+        color: white;
+        text-decoration: none;
+        text-wrap:nowrap;
+        width: fit-content;
+    }
+    nav {
+        height: 80px;
+        justify-content: center;
+        /* gap: 5%; */
+    }
+    .flexwrapper1 {
+        display: flex;
+        gap: 10%;
+        background-color: gray;
+    }
+    .flexwrapper2 {
+        display: flex;
+        gap: 10%;
+        background-color: violet;
+    }
+}
