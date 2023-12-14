@@ -15,6 +15,14 @@ h1 {
 .option {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.myoption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
 }
 
 .add {
@@ -23,7 +31,7 @@ h1 {
 
 .add p.visible {
     color: #FFF;
-    background-color: #2323A5;
+    background-color: #4B4BFF;
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
@@ -64,11 +72,20 @@ input {
     margin-top: 5px;
 }
 
+#mypost {
+    background-color: #4B4BFF;
+    color: #FFF;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    height: 25px;
+}
+
 select {
     float: right;
     padding: 7px 10px;
     border-radius: 7px;
-    margin-bottom: 15px;
+    height: 37px;
 }
 
 article {
