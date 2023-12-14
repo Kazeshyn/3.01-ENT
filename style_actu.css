@@ -48,7 +48,20 @@ article p {
 }
 
 @media (min-width:500px){
+    main {
+        width: 60%;
+    }
+
+    section {
+        margin-top: 30px;
+    }
+
     article {
         flex-direction: row;
+    }
+
+    article img {
+        width: 30%;
+        border-radius: 9px 0 0 9px;
     }
 }
