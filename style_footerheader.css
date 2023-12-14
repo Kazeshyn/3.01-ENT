@@ -11,14 +11,70 @@ img.logoheader {
     height: 46.8px;
 }
 /* ------- */
-.desktopheader {
-    display: none;
-}
+/* Liens */
 a {
     text-align: center;
     font-family: 'M PLUS 1p', sans-serif;
     font-weight: 500;
 }
+.linkfooter {
+    color: white;
+    font-size: 0.8em;
+    text-align: justify;
+    text-decoration: none;
+}
+a.logoheader {
+    margin-left: 2%;
+    margin-top: 0.5%;
+}
+/* ------- */
+/* Burger menu */
+div.menu {
+    height: fit-content;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 0px 9px 38px 5px rgba(0,0,0,0.5); 
+    box-shadow: 0px 9px 38px 5px rgba(0,0,0,0.5);
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 10px; 
+}
+.menuoff {
+    display: none;
+}
+.menuon {
+    display: flex;
+}
+.closebutton {
+    width: 10%;
+    height: auto;
+}
+.burgerwrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    align-items: flex-start;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+div.burgerwrapper a {
+    color: black;
+    text-decoration: none;
+}
+.burgerprewrapper {
+    margin-left: 10%;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'M PLUS 1p', sans-serif;
+
+}
+p.burgerprewrapper {
+        margin-left: 10%;
+        color: black;
+        text-decoration: none;
+        font-weight: 700;
+}
+/* ------- */
+/* Header */
 nav {
     display: flex;
     flex-direction: row;
@@ -28,9 +84,18 @@ nav {
     width: 100%;
     background-color: #2323A5;
 }
-section {
-    height: 100vh;
+.headergroupphone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 5%;
+    margin-left: auto;
 }
+.desktopheader {
+    display: none;
+}
+/* ------- */
+/* Footer */
 footer {
     height: 60px;
     width: 100%;
@@ -39,37 +104,27 @@ footer {
     align-items: center;
     gap: 10%;
 }
-.headergroupphone {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: 5%;
-    margin-left: auto;
-}
 .footwrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
-.linkfooter {
-    color: white;
-    font-size: 0.8em;
-    text-align: justify;
-    text-decoration: none;
+/* ------- */
+p {
+    margin: 0;
 }
-
-a.logoheader {
-    /* height: fit-content; */
-    margin-left: 2%;
-    margin-top: 0.5%;
+section {
+    height: 100vh;
 }
-
 @media (min-width: 900px) {
     .phonetabheader {
         display: none;
     }
     .desktopheader {
         display: flex;
+    }
+    div.menu {
+        display: none;   
     }
     a {
         color: white;
