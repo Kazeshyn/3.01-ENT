@@ -13,11 +13,14 @@ h1 {
 }
 
 select {
-    position: relative;
-    left: 56%;
+    float: right;
     padding: 7px 10px;
     border-radius: 7px;
     margin-bottom: 15px;
+}
+
+section {
+    margin-top: 70px;
 }
 
 article {
@@ -47,13 +50,9 @@ article p {
     font-size: 0.9rem;
 }
 
-@media (min-width:500px){
+@media (min-width:550px){
     main {
         width: 60%;
-    }
-
-    section {
-        margin-top: 30px;
     }
 
     article {
