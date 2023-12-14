@@ -11,8 +11,13 @@ img.logoheader {
     height: 46.8px;
 }
 /* ------- */
+.desktopheader {
+    display: none;
+}
 a {
     text-align: center;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-weight: 500;
 }
 nav {
     display: flex;
@@ -23,6 +28,17 @@ nav {
     width: 100%;
     background-color: #2323A5;
 }
+section {
+    height: 100vh;
+}
+footer {
+    height: 60px;
+    width: 100%;
+    background-color: #2323A5;
+    display: flex;
+    align-items: center;
+    gap: 10%;
+}
 .headergroupphone {
     display: flex;
     align-items: center;
@@ -30,32 +46,51 @@ nav {
     margin-right: 5%;
     margin-left: auto;
 }
-
-a.logoheader {
-    height: 46.8px;
-    margin-left: 2%;
+.footwrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.linkfooter {
+    color: white;
+    font-size: 0.8em;
+    text-align: justify;
+    text-decoration: none;
 }
 
-@media (min-width: 992px) {
+a.logoheader {
+    /* height: fit-content; */
+    margin-left: 2%;
+    margin-top: 0.5%;
+}
+
+@media (min-width: 900px) {
+    .phonetabheader {
+        display: none;
+    }
+    .desktopheader {
+        display: flex;
+    }
     a {
         color: white;
         text-decoration: none;
         text-wrap:nowrap;
-        width: fit-content;
+        /* width: fit-content; */
     }
     nav {
         height: 80px;
         justify-content: center;
-        /* gap: 5%; */
+        gap: 5%;
+    }
+    footer {
+        height: 90px;
     }
     .flexwrapper1 {
         display: flex;
-        gap: 10%;
-        background-color: gray;
+        gap: 40px;
     }
     .flexwrapper2 {
         display: flex;
-        gap: 10%;
-        background-color: violet;
+        gap: 40px;
     }
 }
