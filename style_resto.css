@@ -1,0 +1,153 @@
+body {
+    font-family: 'M PLUS 1p', sans-serif;
+    margin: 0;
+}
+
+main {
+    width: 90%;
+    margin: auto;
+    display: flex;
+}   
+
+.SecondNav {
+    display: none;
+}
+
+.sectionPrincipal{
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal {
+    border: #4B4BFF 2px solid;
+    width: 85%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.modal div {
+    margin-bottom: 15px;
+}
+
+.modal h3 {
+    margin: 0;
+}
+
+.modal ul {
+    list-style-type: none;
+    padding-left: 15px;
+    margin: 0;
+}   
+
+
+
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+button {
+    border: none;
+    border-radius: 20px;
+    color: #FFF;
+    background-color: #4B4BFF;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    cursor: pointer;  
+}
+
+select {
+    padding: 7px 10px;
+    border-radius: 7px;
+    height: 37px;
+    margin-bottom: 15px;
+}
+
+section {
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.resto {
+    background-color: #dedede;
+    width: 195px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;  
+}
+
+.etat {
+    background-color: green;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.resto h2 {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.horaire ul {
+    list-style-type: none;  
+}
+
+.resto a {
+    color: #000;
+}
+
+@media (min-width: 900px) {
+    main {
+        margin: 0;
+        width: 100%;
+    }
+
+    button {
+        display: none;
+    }
+
+    .SecondNav {
+        display: block;
+        order: 2;
+        width: 45%;
+        background-color: #8e8e8e;
+        padding: 4%;
+    }
+
+    .SecondNav div {
+        background-color: #dedede;
+        padding: 20px;
+        border-radius: 7px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .SecondNav h3 {
+        margin: 0;
+    }
+
+    .SecondNav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        margin-top: 5px;
+    }
+    
+    .sectionPrincipal {
+        padding: 30px;
+    }
+}
