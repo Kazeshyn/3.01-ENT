@@ -8,22 +8,24 @@ body {
     margin: 0;
 }
 
-img{
-    width:50%;
-    display:flex;
-    margin:auto;
-    margin-top:20px;
-    margin-bottom:20px;
+
+/* format téléphone */
+img {
+    width: 50%;
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 100%;
     border: 1px solid black;
 }
 
 
-h1{
+h1 {
     font-family: 'M PLUS 1p', sans-serif;
-    font-size:1.7rem;
-    display:flex;
-    align-items:center;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -31,11 +33,12 @@ h1{
 .info-bref {
     margin-left: auto;
     margin-right: auto;
-    width: 200px; 
-    height:auto;
-    background-color: rgb(193, 204, 200);
-    padding: 15px; 
-    margin-bottom:40px;
+    width: 200px;
+    height: auto;
+    background-color: rgb(184, 214, 203);
+    padding: 15px;
+    margin-bottom: 40px;
+    border-radius: 5px;
 }
 
 p {
@@ -44,12 +47,67 @@ p {
     margin: 0;
 }
 
-.suite{
+.suite {
     border-top: 1px solid #000;
-    font-size:1rem;
+    font-size: 1rem;
     margin-left: auto;
     margin-right: auto;
-    width: 200px; 
-    height:auto;
-    padding: 15px; 
+    width: 200px;
+    height: auto;
+    padding: 15px;
+}
+
+
+
+/* format écran*/
+@media (min-width:550px) {
+    .colonne-gauche {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 50px;
+    }
+
+    .le-profil {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 40px;
+
+
+    }
+    .info-bref {
+        margin-bottom: 20px;
+        /* Adjust this margin as needed */
+    }
+
+
+    .bouton-deconnexion {
+        border-radius: 22px;
+        background: #D9D9D9;
+       
+
+
+    }
+
+
+    .colonne-droite {
+        margin-top: 50px;
+    }
+
+
+    .suite {
+        border: none;
+        font-size: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        /* Modifiez cette valeur en fonction de vos besoins */
+        height: 300px;
+        padding: 20px;
+    }
+
+
+
 }
