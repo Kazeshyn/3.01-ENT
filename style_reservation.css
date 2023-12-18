@@ -12,3 +12,7 @@ main {
 h1 {
     text-align: center;
 }
+
+.salle {
+    background-image: url("../images/salle.jpg");
+}
