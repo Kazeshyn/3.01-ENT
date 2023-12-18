@@ -134,9 +134,9 @@ p {
 	margin: 0;
 }
 
-section {
+/* section {
 	height: 100vh;
-}
+} */
 
 @media (min-width:900px) {
 	nav.phonetabheader {
