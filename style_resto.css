@@ -22,26 +22,30 @@ main {
 }
 
 .modal {
+    display: none;
+}
+
+.modalOn {
+    display: block;
     border: #4B4BFF 2px solid;
     width: 85%;
     padding: 20px;
     border-radius: 10px;
 }
 
-.modal div {
+.modalOn div {
     margin-bottom: 15px;
 }
 
-.modal h3 {
+.modalOn h3 {
     margin: 0;
 }
 
-.modal ul {
+.modalOn ul {
     list-style-type: none;
     padding-left: 15px;
     margin: 0;
-}   
-
+}  
 
 
 h1 {
@@ -149,5 +153,9 @@ section {
     
     .sectionPrincipal {
         padding: 30px;
+    }
+
+    .modal {
+        display: none;
     }
 }
