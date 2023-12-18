@@ -14,13 +14,14 @@ img.logoheader {
 /* ------- */
 
 /* Liens */
-a {
+a.navlink {
 	text-align: center;
 	font-family: 'M PLUS 1p', sans-serif;
 	font-weight: 500;
 }
 
 .linkfooter {
+    font-family: 'M PLUS 1p', sans-serif;
 	color: white;
 	font-size: 0.8em;
 	text-align: justify;
