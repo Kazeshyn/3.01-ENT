@@ -64,19 +64,18 @@
 
         <main>
            
-            <h1>Je souhaites réserver :</h1>
-            <section>
-                <div class="salle">
-                    <h2>Salles</h2>
-                    <p>pssssst...ya que la 121</p>
-                    <a class="aReser" href="reserv_salle.html">Réserver une salle</a>
-                </div>
-                <div class="materiel">
-                    <h2>Matériels</h2>
-                    <p>pssssst...demande a tasso</p>
-                    <a class="aReser" href="">Réserver du matériels</a>
-                </div>
-            </section>
+            <h1>Reservation de salle</h1>
+            <form action="">
+                <label for="date">Date :</label>
+                <br><input type="date" id="date">
+                <br><label for="horairedeb">Horaire début :</label>
+                <br><input type="time" id="horairedeb">
+                <br><label for="horairefin">Horaire fin :</label>
+                <br><input type="time" id="horaire">
+                <br><label for="nbsalle">Numéro de salle:</label>
+                <br><input type="number" id="nbsalle">
+                <br><input type="submit" value="Réserver la salle">
+            </form>
 
         </main>
     </body>

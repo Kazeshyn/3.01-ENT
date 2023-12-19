@@ -6,13 +6,76 @@ body {
 main {
     width: 90%;
     margin: auto;
-    display: flex;
 }  
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
 h1 {
     text-align: center;
 }
 
+.salle, .materiel {
+    background-size: cover;
+    height: 90vw;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
 .salle {
-    background-image: url("../images/salle.jpg");
+    background-image: url("./img/temporaire.jpeg");
+}
+
+.materiel {
+    background-image: url("./img/temporaire.jpeg");
+}
+
+.aReser {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #1c1cc8;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 83%;
+}
+
+.salle .aReser {
+    left: 40%;
+}
+
+.materiel .aReser {
+    left: 30%;
+}
+
+@media (min-width: 800px){
+    section {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .salle, .materiel{
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .aReser {
+        padding: 10px 15px;
+        top: 89%;
+    }
+
+    .salle .aReser {
+        left: 65%;
+    }
+    
+    .materiel .aReser {
+        left: 60%;
+    }
 }

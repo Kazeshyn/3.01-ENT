@@ -9,16 +9,36 @@ body {
     font-family: 'M PLUS 1p', sans-serif;
 }
 
-h1{
+.gauche {
+    height: 100%;
+}
+
+h1.nom {
+    display: block;
     text-align: center;
 }
+
+
+h1.nom2 {
+    display: none;
+
+}
+
+.bouton1 {
+    display: block;
+}
+
+.bouton2 {
+    display: none;
+}
+
 main {
     width: 80%;
     margin: auto;
     position: relative;
 }
 
-img{
+img {
     width: 50%;
     display: flex;
     margin: auto;
@@ -31,39 +51,43 @@ img{
 
 ul {
     list-style-type: none;
-    margin-left:px;
-    margin-right:5px;
+    margin-left: px;
+    margin-right: 5px;
     padding: 0;
-    margin-bottom:10px;
-    margin-top:10px;
-    
+    margin-bottom: 10px;
+    margin-top: 10px;
+
 }
 
 .boite-liste {
-    background-color:#D9D9D9 ;
+    background-color: #D9D9D9;
     border-radius: 10px;
     margin-top: 5px;
-    overflow: hidden; /* To clear floats */
-   
+    overflow: hidden;
+    /* To clear floats */
+
 }
 
 .boite-liste ul {
-    padding: 5px; 
-    margin-left:20px;/* Add padding to the ul element */
+    padding: 5px;
+    margin-left: 20px;
+    /* Add padding to the ul element */
 }
 
 .boite-liste li {
-    margin-bottom: 5px; /* Add margin between list items */
+    margin-bottom: 5px;
+    /* Add margin between list items */
 }
 
-a.bouton{
-    height:50px;
+a.bouton {
+    height: 50px;
 }
 
 .bouton {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align content to the start (left) */
+    justify-content: flex-start;
+    /* Align content to the start (left) */
     text-align: center;
     text-decoration: none;
     background: #D9D9D9;
@@ -72,27 +96,157 @@ a.bouton{
     border-radius: 30px;
     width: 150px;
     margin: auto;
+    margin-bottom: 30px;
 }
+
 
 .deconnexion {
     border: none;
 }
 
-img.deconnexion {
-    width: 15px;
-    height: auto;
-    margin-right: 10px; /* Add margin to the right of the image */
+
+.info-gene {
+    margin-top: 30px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    border-top: solid 1.5px black;
+    text-align: center;
 }
 
-h1.info-gene{
-    margin-top:30px;
-    padding-top:20px;
-    margin-bottom:10px;
-    font-size:1.5rem;
-    border-top:solid 1.5px black;
+.contenu-info {
+    height: 100%;
 }
 
 
-@media (min-width:500px){
-   
+@media (min-width:664px) {
+    main {
+        width: 80%;
+        margin: auto;
+        position: relative;
+    }
+
+    img {
+        width: 200px;
+        display: flex;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 100%;
+        border: 1px solid black;
+    }
+
+
+    .gauche {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto 1fr;
+        /* Two rows, first row adjusts to content, second row takes remaining space */
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        margin-top: 100px;
+    }
+
+    .nom2 {
+        font-size: 2rem;
+
+    }
+
+
+    .boite-liste {
+        background-color: #D9D9D9;
+        border-radius: 10px;
+        margin-top: 30px;
+        overflow: hidden;
+        width: 80%;
+        max-width: 300px;
+        margin: 30px auto 0;
+        /* Adjust margin to position at the top */
+        padding: 10px;
+
+    }
+
+
+    .boite-liste ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    .boite-liste li {
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+        margin-top: 10px;
+
+
+    }
+
+    .bouton1 {
+        display: none;
+
+    }
+
+    .bouton2 {
+        display: block;
+        margin-top: 40px;
+    }
+
+    a.bouton {
+        height: 50px;
+    }
+
+    .bouton {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        /* Align content to the start (left) */
+        text-align: center;
+        text-decoration: none;
+
+        color: red;
+        padding: 5px 15px;
+        border-radius: 30px;
+        width: 150px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .deconnexion {
+        border: none;
+    }
+
+
+
+    .contenu-info {
+        margin-left: 50px;
+
+    }
+
+    h1.nom {
+        display: none;
+    }
+
+
+    h1.nom2 {
+        display: block;
+
+    }
+
+
+
+
+    .info-gene {
+        margin-top: 5px;
+        padding-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+        border-top: solid 1.5px black;
+        text-align: center;
+    }
+
 }
