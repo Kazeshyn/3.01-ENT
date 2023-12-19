@@ -38,7 +38,7 @@ main {
     position: relative;
 }
 
-img {
+img.profil {
     width: 50%;
     display: flex;
     margin: auto;
@@ -126,7 +126,7 @@ a.bouton {
         position: relative;
     }
 
-    img {
+    img.profil {
         width: 200px;
         display: flex;
         margin: auto;
