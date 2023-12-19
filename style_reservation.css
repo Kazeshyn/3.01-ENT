@@ -49,35 +49,58 @@ h1 {
 }
 
 .salle .aReser {
-    left: 40%;
+    right: 40%;
 }
 
 .materiel .aReser {
-    left: 30%;
+    right: 30%;
 }
 
 @media (min-width: 800px){
     section {
         flex-direction: row;
         justify-content: center;
+        height: 57vh;
     }
 
     .salle, .materiel{
-        width: 40vw;
-        height: 40vw;
+        width: 38vw;
+        height: 38vw;
     }
 
     .aReser {
         padding: 10px 15px;
-        top: 89%;
+        top: 83%;
     }
 
     .salle .aReser {
-        left: 65%;
+        right: 10%;
     }
     
     .materiel .aReser {
-        left: 60%;
+        right: 10%;
+    }
+
+    h1 {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (min-width: 950px){
+    .salle, .materiel{
+        width: 35vw;
+        height: 35vw;
+    }
+}
+
+@media (min-width:  1010px){
+    section {
+        height: 61vh;}
+
+    .salle, .materiel{
+        width: 30vw;
+        height: 30vw;
     }
 }
 
@@ -104,7 +127,7 @@ label {
     font-size: 0.8rem;
 }
 
-#reserver {
+#reserverSal, #reserverMat {
     background-color: #1c1cc8;
     color: #FFF;
     width: -webkit-fit-content;
@@ -114,6 +137,35 @@ label {
     border-radius: 5px;
     border: none;
     position: relative;
-    left: 48%;
     top: 10px;
 }
+
+#reserverSal {
+    left: 47%;
+}
+
+#reserverMat {
+    left: 39%;
+}
+
+@media (min-width: 800px){
+    form {
+        width: 60%;
+        padding: 30px 40px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    #reserverSal {
+        left: 81%;
+    }
+    
+    #reserverMat {
+        left:57%;
+    }
+
+    .reserver {
+        height: 76vh;
+    }
+}
+
