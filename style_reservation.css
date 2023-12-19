@@ -12,6 +12,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-bottom: 20px;
 }
 
 h1 {
@@ -78,4 +79,41 @@ h1 {
     .materiel .aReser {
         left: 60%;
     }
+}
+
+
+/* Formulaire */
+
+form {
+    background-color: #dbdbdb;
+    padding: 20px;
+    border-radius: 11px;
+    margin-bottom: 20px;
+}
+
+input, select {
+    background-color: #dbdbdb;
+    padding: 10px;
+    border: 2px solid #4e4e4e;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+label {
+    font-size: 0.8rem;
+}
+
+#reserver {
+    background-color: #1c1cc8;
+    color: #FFF;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    left: 48%;
+    top: 10px;
 }
