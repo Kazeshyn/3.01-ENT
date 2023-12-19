@@ -23,7 +23,7 @@ a.navlink {
 .linkfooter {
     font-family: 'M PLUS 1p', sans-serif;
 	color: white;
-	font-size: 0.8em;
+	font-size: 0.65em;
 	text-align: justify;
 	text-decoration: none;
 }
@@ -117,7 +117,6 @@ nav.phonetabheader {
 /* Footer */
 footer {
 	height: 60px;
-	width: 100%;
 	background-color: #2323A5;
 	display: flex;
 	align-items: center;
@@ -148,10 +147,14 @@ p {
 		display: none;
 	}
 
-	a {
+	a.navlink {
+		display: flex;
 		color: white;
+        height: 100%;
 		text-decoration: none;
-		text-wrap: nowrap;         /* width: fit-content; */
+		text-wrap: nowrap;
+		height: 80px;
+		align-items: center;
 	}
 
 	nav.desktopheader {
@@ -166,7 +169,7 @@ p {
 	}
 
 	footer {
-		height: 90px;
+		height:90px;
 	}
 
 	.flexwrapper1 {
@@ -178,5 +181,11 @@ p {
 		display: flex;
 		gap: 40px;
 	}
-
+	.linkfooter {
+    font-family: 'M PLUS 1p', sans-serif;
+	color: white;
+	font-size: 0.8em;
+	text-align: justify;
+	text-decoration: none;
+}
 }
