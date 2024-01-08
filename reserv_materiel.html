@@ -62,22 +62,27 @@
             </nav>
         </header>
 
-        <main>
+        <main class="reserver">
            
-            <h1>Je souhaites réserver :</h1>
-            <section>
-                <div class="salle">
-                    <h2>Salles</h2>
-                    <p>pssssst...ya que la 121</p>
-                    <a class="aReser" href="reserv_salle.html">Réserver une salle</a>
-                </div>
-                <div class="materiel">
-                    <h2>Matériels</h2>
-                    <p>pssssst...demande a tasso</p>
-                    <a class="aReser" href="reserv_materiel.html">Réserver du matériels</a>
-                </div>
-            </section>
-
+            <h1>Reservation de matériel</h1>
+            <form action="">
+                <label for="datedeb">Date de début:</label>
+                <br><input type="datedeb" id="date" required>
+                <br><label for="horairedeb">Horaire début :</label>
+                <br><input type="time" id="horairedeb" required>
+                <label for="datefin">Date de fin:</label>
+                <br><input type="datefin" id="date" required>
+                <br><label for="horairefin">Horaire fin :</label>
+                <br><input type="time" id="horaire" required>
+                <br><label for="materiel">Matériel :</label>
+                <br><select name="materiel" id="materiel" required>
+                    <option value="">- - -</option>
+                    <option value="cafet">Cafet</option>
+                    <option value="cantine">Cantine</option>
+                </select>
+                <br><input id="reserverMat" type="submit" value="Réserver le matériel">
+            </form>
+ 
         </main>
         <footer>
             <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>

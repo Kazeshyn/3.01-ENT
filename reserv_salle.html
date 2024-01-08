@@ -62,21 +62,34 @@
             </nav>
         </header>
 
-        <main>
+        <main class="reserver">
            
             <h1>Reservation de salle</h1>
             <form action="">
                 <label for="date">Date :</label>
-                <br><input type="date" id="date">
+                <br><input type="date" id="date" required>
                 <br><label for="horairedeb">Horaire début :</label>
-                <br><input type="time" id="horairedeb">
+                <br><input type="time" id="horairedeb" required>
                 <br><label for="horairefin">Horaire fin :</label>
-                <br><input type="time" id="horaire">
+                <br><input type="time" id="horaire" required>
                 <br><label for="nbsalle">Numéro de salle:</label>
-                <br><input type="number" id="nbsalle">
-                <br><input type="submit" value="Réserver la salle">
+                <br><input type="number" id="nbsalle" required>
+                <br><input id="reserverSal" type="submit" value="Réserver la salle">
             </form>
 
         </main>
+        <footer>
+            <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
+            <div class="footwrapper">
+                <a href="" class="linkfooter">Site de l'université</a>
+                <a href="" class="linkfooter">Réseau des anciens</a>
+                <a href="" class="linkfooter">Maison des étudiants</a>
+            </div>
+            <div class="footwrapper">
+                <a href="" class="linkfooter">Mentions légales</a>
+                <a href="" class="linkfooter">Plan du site</a>
+                <a href="" class="linkfooter">A propos</a>
+            </div>
+        </footer>
     </body>
 </html>
