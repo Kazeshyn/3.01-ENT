@@ -13,14 +13,17 @@
         <main>
             <img src="./img/logoUniversite.png" alt="Université Gustave Eiffel">
             <h1>Bienvenue sur <br>le portail de connexion !</h1>
-            <form action="">
+            <form action="traitelogin.php">
                 <div class="IdMdp">
-                    <label for="identifiant">Mon Identifiant :</label>
-                    <input class="input" type="text" name="identifiant" id="identifiant" required />
+                    <label for="login">Mon Identifiant :</label>
+                    <input class="input" type="text" name="login" id="login" required />
                 </div>
+                <?php 
+                    if (isset($_GET["err"]) && $_GET["err"]=="login") { echo "ATTENTION MAUVAIS LOGIN";}
+                ?>
                 <div class="IdMdp">
-                    <label for="mdp">Mot de Passe :</label>
-                    <input class="input" type="text" name="mot de passe" id="mdp" required />
+                    <label for="mot_de_passe">Mot de Passe :</label>
+                    <input class="input" type="text" name="mot_de_passe" id="mot_de_passe" required />
                 </div>
                 <a href="mdpoublie.html">Mot de passe oublié ?</a>
                 <br><input id="connect" type="submit" value="Connexion"></input>
