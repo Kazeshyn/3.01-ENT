@@ -21,7 +21,7 @@ a.navlink {
 }
 
 .linkfooter {
-    font-family: 'M PLUS 1p', sans-serif;
+	font-family: 'M PLUS 1p', sans-serif;
 	color: white;
 	font-size: 0.65em;
 	text-align: justify;
@@ -134,9 +134,9 @@ p {
 	margin: 0;
 }
 
-/* section {
+section {
 	height: 100vh;
-} */
+}
 
 @media (min-width:900px) {
 	nav.phonetabheader {
@@ -150,7 +150,7 @@ p {
 	a.navlink {
 		display: flex;
 		color: white;
-        height: 100%;
+		height: 100%;
 		text-decoration: none;
 		text-wrap: nowrap;
 		height: 80px;
@@ -159,33 +159,161 @@ p {
 
 	nav.desktopheader {
 		display: flex;
-		height: 80px;
 		justify-content: center;
-		gap: 5%;
-		flex-direction: row;
-		align-items: center;
 		width: 100%;
+		height: 80px;
+		align-items: center;
+		margin: 0 auto;
 		background-color: #2323A5;
+		position: sticky;
+		top: 0px;
 	}
 
 	footer {
-		height:90px;
+		height: 90px;
 	}
 
-	.flexwrapper1 {
+	nav {
 		display: flex;
-		gap: 40px;
+		justify-content: center;
+		width: 100%;
+		height: 80px;
+		align-items: center;
+		margin: 0 auto;
+		background-color: #2323A5;
+		position: sticky;
+		top: 0px;
 	}
 
-	.flexwrapper2 {
+	li.align {
 		display: flex;
-		gap: 40px;
+		align-items: center;
+		justify-content: center;
 	}
-	.linkfooter {
-    font-family: 'M PLUS 1p', sans-serif;
-	color: white;
-	font-size: 0.8em;
-	text-align: justify;
-	text-decoration: none;
-}
+
+	.conteneur-nav {
+		position: absolute;
+		width: 80%;
+	}
+
+	nav input[type=checkbox] {
+		display: none;
+	}
+
+	nav label {
+		display: inline-block;
+		width: 100%;
+		padding: 10px 0px;
+		text-align: center;
+		background-color: gold;
+	}
+
+	nav ul {
+		display: none;
+		list-style-type: none;
+	}
+
+	nav input[type=checkbox]:checked + ul {
+		display: flex;
+		flex-flow: column wrap;
+	}
+
+	nav ul li {
+		flex: 1 1 auto;
+		text-align: center;
+	}
+
+	nav > div > ul > li > a {
+		color: white;
+	}
+
+	nav a {
+		display: block;
+		text-decoration: none;
+		color: black;
+		padding: 0;
+		text-align: center;
+		font-family: 'M PLUS 1p', sans-serif;
+	}
+
+	.sous {
+		display: flex;
+		flex-flow: column wrap;
+		z-index: 1000;
+	}
+
+	.sous li {
+		flex: 1 1 auto;
+		text-align: left;
+	}
+
+	.sous a {
+		padding: 10px;
+		background-color: RGBa(200, 200, 200, 0.8);
+	}
+
+	.conteneur-nav {
+		position: static;
+	}
+
+	nav label, nav input {
+		display: none;
+	}
+
+	nav input[type=checkbox]:checked + ul, nav ul {
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	nav ul li {
+		position: relative;
+	}
+
+	nav > div > ul > li > a {
+		color: black;
+	}
+
+	nav a {
+		border-bottom: 2px solid transparent;
+	}
+
+	.sous {
+		display: none;
+		box-shadow: 0px 1px 2px #CCC;
+		background-color: white;
+		position: absolute;
+		top: 100%;
+		width: 100%;
+	}
+
+	nav > div > ul li:hover .sous {
+		display: flex;
+		flex-flow: column wrap;
+		padding: 0;
+	}
+
+	.sous a {
+		border-bottom: none;
+		background-color: white;
+	}
+
+	.sous a:hover {
+		border-bottom: none;
+		background-color: RGBa(200, 200, 200, 0.1);
+	}
+
+	.deroulant > a::after {
+		content: " ▼";
+		font-size: 12px;
+	}
+
+	.conteneur-contenu {
+		margin: 50px 20px;
+		height: 1500px;
+	}
+
+	ul.sous li {
+		width: 100%;
+	}
+
 }
