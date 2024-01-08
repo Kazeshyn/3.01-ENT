@@ -101,6 +101,7 @@
                 <br>
                 <br><label for="theme">Thème :</label>
                 <br><select name="theme" id="theme">
+                    <option value="">--- Thème ---</option>
                     <option value="sport">Sport</option>
                     <option value="repas">Repas</option>
                     </select>
