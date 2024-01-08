@@ -3,9 +3,14 @@ body {
     margin: 0;
 }
 
+header {
+    margin-bottom: 15px;
+}
+
 main {
     width: 90%;
     margin: auto;
+    margin-bottom: 10px;
 } 
 
 #retour {
