@@ -38,6 +38,7 @@ main {
     position: relative;
 }
 
+
 img.profil {
     width: 50%;
     display: flex;
@@ -45,7 +46,8 @@ img.profil {
     margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 100%;
-    border: 1px solid black;
+    /* Retirez la bordure noire en ajustant la règle suivante */
+    border: none;
 }
 
 
@@ -118,6 +120,145 @@ a.bouton {
     height: 100%;
 }
 
+/* popup foirmat écran */
+.ajouter {
+ border-radius: 5px; /* Pour créer des coins arrondis */
+    background-color: blue; /* Couleur bleue, vous pouvez ajuster selon vos préférences */
+    color: #fff; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement interne du bouton (ajustez ici) */
+    font-size: 16px; /* Taille du texte */
+    cursor: pointer; /* Indique que le curseur doit changer au survol */
+    border: none; /* Supprime la bordure du bouton */
+    width: 100px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    margin-left: 0px; 
+    margin-top: 20px;
+}
+
+.ajouter:hover {
+    transform: scale(1.1); /* Ajustez la valeur pour le niveau de zoom souhaité */
+    background-color:blue;
+    color: white;
+}
+
+  .custom-model-main {
+    text-align: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; /* z-index: 1050; */
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear, z-index 0.15;
+    -o-transition: opacity 0.15s linear, z-index 0.15;
+    transition: opacity 0.15s linear, z-index 0.15;
+    z-index: -1;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .model-open {
+    z-index: 99999;
+    opacity: 1;
+    overflow: hidden;
+  }
+  .custom-model-inner {
+    -webkit-transform: translate(0, -25%);
+    -ms-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out;
+    transition: -webkit-transform 0.3s ease-out;
+    -o-transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    display: inline-block;
+    vertical-align: middle;
+    width: 600px;
+    margin: 30px auto;
+    max-width: 97%;
+  }
+  .custom-model-wrap {
+    display: block;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    outline: 0;
+    text-align: left;
+    padding: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-height: calc(100vh - 70px);
+      overflow-y: auto;
+  }
+  .model-open .custom-model-inner {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    position: relative;
+    z-index: 999;
+  }
+  .model-open .bg-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+  }
+  .bg-overlay {
+    background: rgba(0, 0, 0, 0);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-transition: background 0.15s linear;
+    -o-transition: background 0.15s linear;
+    transition: background 0.15s linear;
+  }
+  .close-btn {
+    position: absolute;
+    right: 20px; /* Ajustez la marge à droite selon vos besoins */
+    top: 10px; /* Ajustez la marge supérieure selon vos besoins */
+    cursor: pointer;
+    z-index: 99;
+    font-size: 30px;
+    color: #000000;
+}
+
+.bouton-envoyer-infos {
+    border-radius: 5px; /* Pour créer des coins arrondis */
+    background-color: blue; /* Couleur bleue, vous pouvez ajuster selon vos préférences */
+    color: #fff; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement interne du bouton */
+    font-size: 16px; /* Taille du texte */
+    cursor: pointer; /* Indique que le curseur doit changer au survol */
+    border: none; /* Supprime la bordure du bouton */
+    transition: transform 0.3s ease-in-out; /* Ajout de la transition pour l'effet de zoom */
+}
+
+.bouton-envoyer-infos:hover {
+    background-color: blue; /* Couleur bleue légèrement plus foncée au survol */
+    transform: scale(1.1); /* Ajustez la valeur pour le niveau de zoom souhaité */
+}
+
+/* textarea */
+#infos {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 
 @media (min-width:664px) {
     main {
@@ -133,9 +274,10 @@ a.bouton {
         margin-top: 20px;
         margin-bottom: 20px;
         border-radius: 100%;
-        border: 1px solid black;
+        border:none;
     }
 
+ 
 
     .gauche {
         display: grid;
@@ -147,10 +289,7 @@ a.bouton {
         margin-top: 100px;
     }
 
-    .nom2 {
-        font-size: 2rem;
-
-    }
+    
 
 
     .boite-liste {
@@ -234,9 +373,9 @@ a.bouton {
 
     h1.nom2 {
         display: block;
+        font-size: 2rem;
 
     }
-
 
 
 
@@ -249,4 +388,18 @@ a.bouton {
         text-align: center;
     }
 
+
+    /* popup format tel */
+
+    .custom-model-inner {
+        width: 80%; /* Ajustez la largeur selon vos besoins */
+        max-width: 800px; /* Ajustez la largeur maximale selon vos besoins */
+    }
+
+    /* textarea */
+    #infos {
+        width: 70%; /* Ajustez la largeur selon vos besoins */
+        max-width: 600px; /* Ajustez la largeur maximale selon vos besoins */
+        margin: 0 auto; /* Centrez le textarea */
+    }
 }
