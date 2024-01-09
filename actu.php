@@ -6,18 +6,6 @@
 
     $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
 
-        // Vérifier si l'utilisateur est connecté ou non
-        if (isset($_SESSION['login'])) {
-            // Utilisateur connecté
-            $nom_utilisateur = $_SESSION['login'];
-            $bouton_texte = "Se déconnecter";
-            $lien_deconnexion = "logout.php";
-        } else {
-            // Utilisateur non connecté
-            $bouton_texte = "Se connecter";
-            $lien_deconnexion = "login.php";
-        }
-
     $requete = "SELECT * FROM actualite ORDER BY date_actu DESC";
 
 ?>

@@ -189,7 +189,7 @@
                     
                             <div class="text">
                                 <h3><?= $post["titre_post"] ?></h3>
-                                <p><?= $contenuLimite ?></p>
+                                <p><?= $contenuLimite ?>...</p>
                                 <?php if (strlen($post["contenu_post"]) > 150): ?>
                                     <a class="seeMore" href="post.php?id=<?= $post["id_post"] ?>">Lire la suite...</a>
                                 <?php endif; ?>
