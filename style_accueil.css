@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+nav.sidenav {
+    position: absolute;
+	left: 82%;
+    height: 100%;
+    width: 18%;
+    background-color: #353131;
+    float: right;
+}
+nav.openedside {
+    width: 60%;
+	left: 40%;
+	z-index: 2;
+}
+div.opensidebutton {
+    height: 60px;
+    width: 70px;
+    color: white;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 500;
+    float: left;
+}
+div.openedsidebutton {
+	width: 100%;
+    text-align: left;
+	margin-left: 4%;
+}
+
+div.infosideoff {
+	display: none;
+}
+div.infosideon {
+	display: flex;
+	width: 100%;
+}
+div.infosidehm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: fit-content;
+	background-color: #555353;
+	margin: auto;
+	margin-bottom: 5%;
+	margin-top: 5%;
+}
+div.infosidenote {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: fit-content;
+	background-color: #555353;
+	margin: auto;
+	margin-bottom: 5%;
+	margin-top: 5%;
+}
+.sideelementoff {
+	display: none;
+	justify-content: center;
+	width: 90%;
+	height: 38px;
+	background-color: #b9b9b9;
+	border-radius: 6px;
+	margin-bottom: 4%;
+	text-align: center;
+	line-height: 38px;
+}
+.sideelementon {
+	display: flex;
+}
+
+div.gridbuttons {
+	width: 80%;
+	float: left;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 0;
+	grid-row-gap: 12%;
+	margin: auto;
+	place-items: center;
+    padding: 2%;
+}
+
+a.buttonlink {
+    box-sizing: border-box;
+	width: 80%;
+	height: 100px;
+	background-color: gray;
+	text-decoration: none;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+    place-items: center;
+    padding: 5%;
+    border-radius: 13px;
+}
+
+img.icons {
+	height: 25px;
+	border: black solid 1px;
+    margin: 10%;
+}
+
+h2.titlelink {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+	font-family: 'M PLUS 1p', sans-serif;
+	font-size: 0.5em;
+}
+h2.titlelinkrecap {
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	font-family: 'M PLUS 1p', sans-serif;
+	font-size: 1em;
+	margin: auto;
+}
+h3.titlelinkrecap {
+	font-family: 'M PLUS 1p', sans-serif;
+	font-size: 0.9em;
+	width: 100%;
+	text-align: center;
+	color: white;
+}
