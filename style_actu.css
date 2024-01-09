@@ -12,15 +12,20 @@ h1 {
     text-align: center;
 }
 
-select {
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#theme {
     float: right;
     padding: 7px 10px;
     border-radius: 7px;
-    margin-bottom: 15px;
 }
 
 section {
-    margin-top: 70px;
+    margin-top: 20px;
 }
 
 article {
@@ -28,6 +33,7 @@ article {
     border: 2px solid #000;
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
 article img {
@@ -43,11 +49,22 @@ article h2 {
     margin-top:0;
     margin-bottom: 5px;
     font-weight: 500;
-    text-align: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
 }
 
 article p {
     font-size: 0.9rem;
+}
+
+#addActu {
+    background-color: #4B4BFF;
+    color: #FFF;
+    padding: 5px 10px 28px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    height: 25px;
 }
 
 @media (min-width:550px){

@@ -1,0 +1,70 @@
+body {
+    font-family: 'M PLUS 1p', sans-serif;
+    margin: 0;
+}
+
+header {
+    margin-bottom: 15px;
+}
+
+main {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+} 
+
+#retour {
+    margin-left: 15%;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 0.8rem;
+}
+
+form {
+    background-color: #dbdbdb;
+    padding: 20px;
+    border-radius: 11px;
+    margin-bottom: 20px;
+}
+
+input, select, textarea {
+    background-color: #dbdbdb;
+    padding: 10px;
+    border: 2px solid #4e4e4e;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    width: 97%;
+}
+
+#submit {
+    background-color: #1c1cc8;
+    color: #FFF;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    top: 10px;
+}
+
+@media (min-width: 800px){
+    form {
+        width: 60%;
+        padding: 30px 40px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    main {
+        height: 76vh;
+    }
+}
