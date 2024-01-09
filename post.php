@@ -1,4 +1,41 @@
 <!DOCTYPE html>
+<?php 
+    session_start();
+    include "connexion.php";
+
+    $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
+
+
+    $_SESSION['previous_url'] = $_SERVER['HTTP_REFERER'];
+
+    // Vérifier si l'utilisateur est connecté ou non
+    if (isset($_SESSION['login'])) {
+        // Utilisateur connecté
+        $nom_utilisateur = $_SESSION['login'];
+        $bouton_texte = "Se déconnecter";
+        $lien_deconnexion = "logout.php";
+    } else {
+        // Utilisateur non connecté
+        $bouton_texte = "Se connecter";
+        $lien_deconnexion = "login.php";
+    }
+
+    // récupére l'id de l'article depuis l'url
+    $id_post=$_GET["id"];
+
+    $requete="SELECT * FROM post WHERE id_post = $id_post";
+    $stmt=$db->prepare($requete);
+    $stmt->execute();
+    $result=$stmt->fetch();
+
+    //récupére les commentaires de l'article
+    $requete_comment="SELECT * FROM commentaire WHERE id_post=$id_post ORDER BY date_commentaire DESC";
+    $stmt_comment=$db->prepare($requete_comment);
+    $stmt_comment->execute();
+    $result_comment=$stmt_comment->fetchAll();
+?>
+
+
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -7,12 +44,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style_footerheader.css">
-        <link rel="stylesheet" href="style_forum.css">
-        <title>Forum - ENT</title>
+        <link rel="stylesheet" href="style_post.css">
+        <title><?= $result["titre_post"]?> - Blog</title>
     </head>
-
     <body>
-        <header>
+    <header>
             <!-- Header téléphone/tablettes -->
             <nav class="phonetabheader">
                 <a href="accueil.php" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png"
@@ -84,55 +120,73 @@
                     </ul>
                 </div>
             </nav>
-        </header>
+    </header>
+
         <main>
-            <h1>Forum</h1>
-            <section class="option">
-                <div class="myoption">
-                    <a class="add" href="addPost.php">+</a>
-                    <a id="mypost" href="">Mes posts</a>
+            <p><a id="retour" href="forum.php">Retour au forum</a></p>
+
+            <article>
+            <?php 
+                // Récupérer les informations de l'utilisateur associé au post principal
+                $id_utilisateur_post = $result["id_utilisateur"];
+                $requete_utilisateur_post = "SELECT * FROM utilisateur WHERE id_utilisateur = $id_utilisateur_post";
+                $stmt_utilisateur_post = $db->prepare($requete_utilisateur_post);
+                $stmt_utilisateur_post->execute();
+                $info_user_post = $stmt_utilisateur_post->fetch();
+            
+            ?>
+                <div class="compte">
+                    <img src="<?= $info_user_post["url_pp"] ?>" alt="">
+                    <h3><?= $info_user_post["nom"] ?>  <?= $info_user_post["prenom"] ?></h3> 
+                </div> 
+                <h1><?= $result["titre_post"]?></h1>
+                <p class="content"><i><?= $result["date_post"] ?></i>
+                <br>
+                <br><?= $result["contenu_post"]; ?></p>
+            </article>
+
+            <div class="commentaire">
+                <h2>Commentaires </h2>
+                <!-- Formulaire pour ajouter un commentaire -->
+                <div class="addComment">
+                    <h3>Ajouter un commentaire :</h3>
+                    <form action="traitecommentaire.php" method="post">
+                        <input type="hidden" name="id_post" value="<?= $result["id_post"] ?>">
+                        <input type="hidden" name="id_utilisateur" value="<?php echo $_SESSION['id_utilisateur'];?>">
+                        <textarea name="contenu" placeholder="Écrivez un commentaire..." required></textarea>
+                        <input type="submit" value="Ajouter le commentaire">
+                    </form>
                 </div>
-                <select name="filtre" id="filtre">
-                    <option value="">Filtrer par</option>
-                    <option value="sport">Sport</option>
-                    <option value="repas">Repas</option>
-                </select>
-            </section>
+                
+                
+                <div id="allComment">
+                <?php 
+                    foreach($result_comment as $comment){
+                        $id_utilisateur = $comment["id_utilisateur"];
 
-            <section class="article">
-                <article>
-                    <div class="compte">     
-                        <img src="img/temporaire.jpeg" alt="">
-                        <h2>Nom Prénom</h2>
+                        $requete_utilisateur = "SELECT * FROM utilisateur WHERE id_utilisateur = $id_utilisateur";
+                        $stmt_utilisateur = $db->prepare($requete_utilisateur);
+                        $stmt_utilisateur->execute();
+                        $info_user = $stmt_utilisateur->fetch();
+                        
+                ?>
+                    <div class="comment">
+                        <div class="compte">
+                            <img src="<?= $info_user["url_pp"] ?>" alt="">
+                            <h3><?= $info_user["nom"] ?>  <?= $info_user["prenom"] ?></h3> 
+                        </div> 
+                        <p><i>(<?= $comment["date_commentaire"] ?>)</i>
+                        <br><?= $comment["contenu_commentaire"] ?></p>
+                        <?php if ($isAdmin): ?>
+                            <form action="supComment.php" method="post">
+                                <input type="hidden" name="id_commentaire" value="<?= $comment["id_commentaire"] ?>">
+                                <input class="supButton" type="submit" value="Supprimer">
+                            </form>
+                        <?php endif; ?>
                     </div>
-               
-                    <div class="text">
-                        <h3>Titre</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur. Neque turpis accumsan eu magna mauris sollicitudin aliquam. Elementum vivamus.</p>
-                    </div>
-
-                    <div class="react">
-                        <p class="like">♥</p>
-                        <p class="comment">💬</p>
-                    </div>
-                </article>
-                <article>
-                    <div class="compte">     
-                        <img src="img/temporaire.jpeg" alt="">
-                        <h2>Nom Prénom</h2>
-                    </div>
-               
-                    <div class="text">
-                        <h3>Titre</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur. Neque turpis accumsan eu magna mauris sollicitudin aliquam. Elementum vivamus.</p>
-                    </div>
-
-                    <div class="react">
-                        <p class="like">♥</p>
-                        <p class="comment">💬</p>
-                    </div>
-                </article>
-            </section>
+                <?php } ?>
+                </div>
+            </div>
         </main>
         <footer>
             <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
