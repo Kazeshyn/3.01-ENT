@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
     <link rel=" preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css"> -->
     <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css">
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
@@ -95,7 +95,7 @@
             </div>
         </nav>
     </header>
-    <main>
+    <section>
         <h1 class="titre-note">Notes</h1>
         <div class="chart-container"></div>
         <script>
@@ -115,21 +115,13 @@
         </script>
         <h2 class="titre-note-detail">Notes détaillées</h2>
         <div class="note-detail">
-
             <p>Eval du 17/11 - Note : 1.375986/20</p>
             <p>Eval du 17/11 - Note : 1.375986/20</p>
             <p>Eval du 17/11 - Note : 1.375986/20</p>
             <p>Eval du 17/11 - Note : 1.375986/20</p>
             <p>Eval du 17/11 - Note : 1.375986/20</p>
-
-
         </div>
-
-    </main>
-
-
-
-    </div>
+        </section>
     <footer>
         <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
         <div class="footwrapper">
