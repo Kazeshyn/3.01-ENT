@@ -90,6 +90,7 @@
     </header>
 
     <section>
+        <!-- Menu latéral -->
         <nav class="sidenav" id="menuside">
             <div class="opensidebutton" id="sidebar">
                 ↔
@@ -108,6 +109,7 @@
                 <div class="sideelementoff" id="generateElement">Exemple1 - 2/10</div>
             </div>
         </nav>
+        <!-- Boutons -->
         <div class="gridbuttons">
             <a href="" class="buttonlink">
                 <img src="./img/Placeholder Circle.png" alt="" class="icons">
