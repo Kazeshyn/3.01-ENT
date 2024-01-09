@@ -216,23 +216,49 @@ CREATE TABLE IF NOT EXISTS `salle` (
 -- Structure de la table `utilisateur`
 --
 
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utilisateur` (
+  `id_utilisateur` int(11) NOT NULL,
   `login` varchar(16) NOT NULL,
-  `nom` varchar(32) NOT NULL,
-  `prenom` varchar(16) NOT NULL,
-  `age` int NOT NULL,
-  `url_pp` varchar(128) NOT NULL,
-  `adresse` varchar(128) NOT NULL,
-  `formation` varchar(32) NOT NULL,
-  `numero_etudiant` int NOT NULL,
+  `nom` varchar(32) DEFAULT NULL,
+  `prenom` varchar(16) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `url_pp` varchar(128) DEFAULT NULL,
+  `adresse` varchar(128) DEFAULT NULL,
+  `formation` varchar(32) DEFAULT NULL,
+  `numero_etudiant` int(11) DEFAULT NULL,
   `mot_de_passe` varchar(100) NOT NULL,
-  `permission_level` int NOT NULL,
-  PRIMARY KEY (`id_utilisateur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `isAdmin` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `nom`, `prenom`, `age`, `url_pp`, `adresse`, `formation`, `numero_etudiant`, `mot_de_passe`, `isAdmin`) VALUES
+(3, 'truc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$j15xxPTaE1bqmIu5rGJ7keVuTCVaIklT5B7mfXof.dyPy7tPnUd7G', 0),
+(4, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$kc/KKAggfxb9UfGQrlvNaeImmjvI4xTtwl8DfMYGshGd5xj9LIzly', 1);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id_utilisateur`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */; 
