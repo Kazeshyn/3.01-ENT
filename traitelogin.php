@@ -21,7 +21,7 @@ if ($stmt->rowcount()==1){
 			$_SESSION["admin"] = false;
 		}
 
-        header('Location: index.php');
+        header('Location: accueil.html');
 
 	} else {
 		header ('Location:login.php?err=mot_de_passe');
