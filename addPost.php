@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-    include 'connexion.php';
     session_start();
-
-    $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
-
-    $requete = "SELECT * FROM actualite ORDER BY date_actu DESC";
-
 ?>
 
 <html lang="fr">
@@ -18,21 +12,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style_footerheader.css">
-        <link rel="stylesheet" href="style_actu.css">
-        <title>Actualités - ENT</title>
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Sélectionnez le sélecteur par son ID
-            var themeSelect = document.getElementById('theme');
-
-            // Ajoutez un gestionnaire d'événements pour mettre à jour le libellé
-            themeSelect.addEventListener('change', function () {
-                var selectedOption = themeSelect.options[themeSelect.selectedIndex];
-                themeSelect.options[0].text = selectedOption.text;
-            });
-        });
-    </script>
+        <link rel="stylesheet" href="style_addActu.css">
+        <title>Ajouter un post au forum à l'ENT</title>
     </head>
 
     <body>
@@ -40,7 +21,7 @@
         <!-- Header téléphone/tablettes -->
         <nav class="phonetabheader">
             <a href="accueil.php" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png"
-                    alt="Retourner à l'accueil (page actuelle)"></a>
+                    alt="Retourner à l'accueil"></a>
             <div class="headergroupphone">
                 <a href="" class="darkm">☀️</a>
                 <img src="./img/burger_menu.png" alt="" id="button">
@@ -109,64 +90,30 @@
             </div>
         </nav>
     </header>
+        <main>
+            <p><a id="retour" href="forum.php">Retour au forum</a></p>
 
-
-
-
-    <main>
-    <h1>Actualités </h1>
-    <!-- Ajout le bouton si l'admin est connecté -->
-    <section class="option">
-        <?php if ($isAdmin): ?>
-            <a id="addActu" href="addActu.php">Ajouter une actu</a>
-        <?php endif; ?>
-        <form  method="get" id="themeForm" action="actu.php">
-            <select name="theme" id="theme" onchange="this.form.submit()">
-                <option value="" <?php echo ($filtre === '') ? 'selected' : ''; ?>>--- Filtrer par ---</option>
-                <option value="Tous" <?php echo ($filtre === 'Tous') ? 'selected' : ''; ?>>Tous</option>
-                <option value="sport" <?php echo ($filtre === 'sport') ? 'selected' : ''; ?>>Sport</option>
-                <option value="repas" <?php echo ($filtre === 'repas') ? 'selected' : ''; ?>>Repas</option>
-            </select>
-        </form>
-
-    </section>
-
-    <section>
-        <?php
-            // Vérifier si un filtre a été sélectionné
-            $theme = isset($_GET['theme']) ? $_GET['theme'] : '';
-
-            // Construire la requête SQL en fonction du filtre
-            $requete = "SELECT * FROM actualite";
-            if (!empty($theme) && $theme !== 'Tous') {
-                $requete .= " WHERE theme_actu = :theme";
-            }
-            $requete .= " ORDER BY date_actu DESC";
-
-            // Préparer et exécuter la requête
-            $stmt = $db->prepare($requete);
-            if (!empty($theme) && $theme !== 'Tous') {
-                $stmt->bindParam(':theme', $theme, PDO::PARAM_STR);
-            }
-            $stmt->execute();
-            $result = $stmt->fetchAll();
-
-            // Afficher les actualités filtrées
-            foreach ($result as $actu) { 
-        ?>
-            <article>
-                <img src="img/<?= $actu["url_actu"] ?>" alt="">
-                <div class="text">
-                    <h2><?= $actu["titre_actu"] ?></h2>
-                    <p><i><?= $actu["date_actu"] ?></i></p>
-                    <p><?= $actu["contenu_actu"] ?> </p>
-                </div>
-            </article>
-        <?php } ?>
-    </section>
-</main>
-
-
+            <h1>Ajouter un post !</h1>
+            <form action="traitePost.php" method="post">
+                <input type="hidden" name="id_utilisateur" value="<?php echo $_SESSION['id_utilisateur'];?>">
+                <br><label for="titre">Titre :</label>
+                <br><input id="titre" type=text name="titre" required>
+                <br><label for="categorie">Catégorie :</label>
+                <br><select name="categorie" id="categorie">
+                    <option value="">--- Catégorie ---</option>
+                    <option value="cours">Cours</option>
+                    <option value="sortie">Sortie</option>
+                    <option value="tuto">Tuto</option>
+                    <option value="sport">Sport</option>
+                    <option value="repas">Repas</option>
+                    </select>
+                <br>
+                <br><label for="contenu">Contenu :</label>
+                <br><textarea id="contenu" name="contenu" required></textarea>
+                <br>
+                <br><input id="submit" type=submit value= "OK">
+            </form>
+        </main>
         <footer>
             <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
             <div class="footwrapper">
@@ -181,31 +128,4 @@
             </div>
         </footer>
     </body>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var themeSelect = document.getElementById('theme');
-
-        // Récupérer le paramètre de l'URL
-        var urlParams = new URLSearchParams(window.location.search);
-        var selectedTheme = urlParams.get('theme');
-
-        // Si un paramètre existe, sélectionnez l'option appropriée
-        if (selectedTheme) {
-            var options = themeSelect.options;
-            for (var i = 0; i < options.length; i++) {
-                if (options[i].value === selectedTheme) {
-                    themeSelect.selectedIndex = i;
-                    break;
-                }
-            }
-        }
-
-        // Ajouter un gestionnaire d'événements pour mettre à jour le libellé
-        themeSelect.addEventListener('change', function () {
-            var selectedOption = themeSelect.options[themeSelect.selectedIndex];
-            themeSelect.options[0].text = selectedOption.text;
-        });
-    });
-</script>
-
 </html>

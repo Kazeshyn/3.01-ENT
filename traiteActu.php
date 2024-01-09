@@ -4,7 +4,6 @@ include "connexion.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire
-    var_dump($_POST);
     $titre = $_POST['titre'];
     $contenu = $_POST['contenu'];
     $image = $_POST['image'];
