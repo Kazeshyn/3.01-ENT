@@ -20,7 +20,7 @@ text-align: center;
 height: 210px;
 border-radius: 210px;
 background-color: rgb(170, 167, 167);
-display: flex;
+    display: flex;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -40,4 +40,26 @@ p.note-detail{
 h2.titre-note-detail{
     margin-left:20px;
     }
-    
+
+/* Radar */
+.radar-chart .area {
+    fill-opacity: 0.7;
+  }
+  .radar-chart.focus .area {
+    fill-opacity: 0.3;
+  }
+  .radar-chart.focus .area.focused {
+    fill-opacity: 0.9;
+  }
+  .area.germany, .germany .circle {
+    fill: #FFD700;
+    stroke: none;
+  }
+  .area.argentina, .argentina .circle {
+    fill: #ADD8E6;
+    stroke: none;
+  }
+  .chart-container {
+    display: flex;
+    justify-content: center;
+  }
