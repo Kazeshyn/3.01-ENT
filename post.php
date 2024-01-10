@@ -8,6 +8,18 @@
 
     $_SESSION['previous_url'] = $_SERVER['HTTP_REFERER'];
 
+    // Vérifier si l'utilisateur est connecté ou non
+    if (isset($_SESSION['login'])) {
+        // Utilisateur connecté
+        $nom_utilisateur = $_SESSION['login'];
+        $bouton_texte = "Se déconnecter";
+        $lien_deconnexion = "logout.php";
+    } else {
+        // Utilisateur non connecté
+        $bouton_texte = "Se connecter";
+        $lien_deconnexion = "login.php";
+    }
+
     // récupére l'id de l'article depuis l'url
     $id_post=$_GET["id"];
 
@@ -133,7 +145,7 @@
                 <br><?= $result["contenu_post"]; ?></p>
             </article>
 
-            <div class="commentaire">
+            <div id="commentaire" class="commentaire">
                 <h2>Commentaires </h2>
                 <!-- Formulaire pour ajouter un commentaire -->
                 <div class="addComment">

@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="style_forum.css">
         <title>Forum - ENT</title>
 
+        <script src="script-burger.js" defer></script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 // Sélectionnez le sélecteur par son ID
@@ -192,6 +193,12 @@
                                 <p><?= $contenuLimite ?>...</p>
                                 <?php if (strlen($post["contenu_post"]) > 150): ?>
                                     <a class="seeMore" href="post.php?id=<?= $post["id_post"] ?>">Lire la suite...</a>
+                                <?php endif; ?>
+                                <?php if ($isAdmin): ?>
+                                    <form action="supPost.php" method="post">
+                                        <input type="hidden" name="id_post" value="<?= $post["id_post"] ?>">
+                                        <input class="supButton" type="submit" value="Supprimer">
+                                    </form>
                                 <?php endif; ?>
                             </div>
                         </a>

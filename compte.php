@@ -18,7 +18,6 @@ if (isset($_SESSION["login"])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,8 +126,8 @@ if (isset($_SESSION["login"])) {
             <div>
                 <div>
 
-                <img src="<?php echo $result["url_pp"]; ?>" alt="image-modifiable" class="profil">
-                    <h1 class="nom">            
+                    <img src="<?php echo $result["url_pp"]; ?>" alt="image-modifiable" class="profil">
+                    <h1 class="nom">
                         <?php
 if (isset($result)) {
     echo '<h1 class="nom">' . $result['nom'] . ' - ' . $result['prenom'] . '</h1>';
@@ -138,9 +137,11 @@ if (isset($result)) {
 
                 </div>
                 <div class="bouton1">
-                    <a href="index.php" class="bouton"><img src="./img/Deconnexion.svg" alt=""
-                            class="deconnexion">Déconnexion</a>
+                    <a href="deconnexion.php" class="bouton">
+                        <img src="./img/Deconnexion.svg" alt="" class="deconnexion">Déconnexion
+                    </a>
                 </div>
+
 
 
                 <div class="boite-liste">
@@ -159,13 +160,13 @@ if (isset($result)) {
 
                 </div>
                 <div class="bouton2">
-                    <a href="index.php" class="bouton"><img src="./img/Deconnexion.svg" alt=""
+                    <a href="deconnexion.php" class="bouton"><img src="./img/Deconnexion.svg" alt=""
                             class="deconnexion">Déconnexion</a>
                 </div>
 
             </div>
             <div class="contenu-info">
-            <?php
+                <?php
 if (isset($result)) {
     echo '<h1 class="nom2">' . $result['nom'] . ' - ' . $result['prenom'] . '</h1>';
     
@@ -188,25 +189,28 @@ if (isset($result)) {
 
                 <div class="custom-model-main">
                     <div class="custom-model-inner">
-                       
+
                         <div class="custom-model-wrap">
-                        <div class="close-btn">×</div>
+                            <div class="close-btn">×</div>
                             <form method="post" action="traite-compte.php" id="form-infos">
                                 <div class="pop-up-content-wrap">
                                     <label for="infos">
                                         <h2>Modifier vos informations générales </h2><br>
-                                       <p>En tant qu'étudiant, vous pouvez modifier votre profil et rentrer les
-                                        informations nécessaires à votre parcours. Ou écrire une simple description qui
-                                        vous caractérise. Ces informations seront traitées par notre service interne et
-                                        directement enregistrées dans notre base de données.
-                                        A vos claviers !</p> 
+                                        <p>En tant qu'étudiant, vous pouvez modifier votre profil et rentrer les
+                                            informations nécessaires à votre parcours. Ou écrire une simple description
+                                            qui
+                                            vous caractérise. Ces informations seront traitées par notre service interne
+                                            et
+                                            directement enregistrées dans notre base de données.
+                                            A vos claviers !</p>
                                     </label>
                                     <br>
                                     <br>
 
-                                    <textarea id="infos" name="infos" rows="5" cols="70">Rentrer les informations...</textarea>
+                                    <textarea id="infos" name="infos" rows="5"
+                                        cols="70">Rentrer les informations...</textarea>
                                     <br>
-                                    <input type="submit" value="Envoyer" class="bouton-envoyer-infos"/>
+                                    <input type="submit" value="Envoyer" class="bouton-envoyer-infos" />
                                 </div>
                             </form>
                         </div>
