@@ -1,9 +1,9 @@
 <?php
 session_start();
 include "connexion.php";
-$db->query('SET NAMES utf8');
+$pdo->query('SET NAMES utf8');
 $requete="SELECT * FROM utilisateur WHERE login=:login";
-$stmt=$db->prepare($requete);
+$stmt=$pdo->prepare($requete);
 $stmt->bindParam(':login',$_GET["login"], PDO::PARAM_STR);
 $stmt->execute();
 

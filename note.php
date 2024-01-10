@@ -175,18 +175,18 @@
         </div>
         </div>
         <?php if ($isAdmin) : ?>
-            <h2>Insérer une note :</h1>
+            <h2 class="titre-note-detail">Insérer une note :</h1>
                 <form action="traiteNote.php" method="post"> <!-- Ajout de method="post" -->
                     <label for="matiere">Matière :</label>
                     <br><select name="matiere" id="matiere">
-                        <<option value="Integration">Intégration</option>
-                            <option value="cnumerique">Culture Numérique</option>
+                        <<option value="Intégration">Intégration</option>
+                            <option value="C.numérique">Culture Numérique</option>
                             <option value="anglais">Anglais</option>
                             <option value="audiovisuel">Audiovisuel</option>
-                            <option value="developpementweb">Developpement Web</option>
-                            <option value="productiongraphique">Production Graphique</option>
-                            <option value="cartistique">Culture Artistique</option>
-                            <option value="developpementback">Développement Back</option>
+                            <option value="D.WEB">Developpement Web</option>
+                            <option value="Graphisme">Production Graphique</option>
+                            <option value="C.Artistique">Culture Artistique</option>
+                            <option value="D.back">Développement Back</option>
                     </select>
                     <br>
                     <label for="login">Nom de l'élève :</label>

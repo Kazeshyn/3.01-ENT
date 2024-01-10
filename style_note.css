@@ -14,7 +14,7 @@ h1.titre-note {
 	text-align: center;
 }
 
-.graphique {
+/* .graphique {
 	width: 210px;
 	height: 210px;
 	border-radius: 210px;
@@ -23,7 +23,7 @@ h1.titre-note {
 	margin: auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
-}
+} */
 
 p.note-detail {
 	margin-left: 50px;
@@ -68,3 +68,6 @@ h2.titre-note-detail {
 }
 
 /* Form */
+form {
+    margin: 20px; /* Ajoutez cette ligne pour définir la marge à zéro */
+}
