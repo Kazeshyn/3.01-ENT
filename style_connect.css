@@ -77,9 +77,20 @@ form {
     left: 1%;
 }
 
+.IdMdp.focus, .IdMdp:hover {
+    border: 2px solid #3498db;
+}
+input:focus {
+    outline: none;
+}
+
 a {
     color: #000;
     font-size: 0.8rem;
+}
+
+a:hover {
+    color: #3498db;
 }
 
 #connect {
@@ -90,4 +101,11 @@ a {
     border-radius: 11px;
     float: right;
     margin-right: 30px;
+}
+
+#connect:hover {
+    background-color: #FFF;
+    color: #3498db;
+    border: 2px solid #3498db;
+    padding: 7px 13px;
 }

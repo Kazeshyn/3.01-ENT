@@ -14,16 +14,16 @@
             <img src="./img/logoUniversite.png" alt="Université Gustave Eiffel">
             <h1>Bienvenue sur <br>le portail de connexion !</h1>
             <form action="traitelogin.php">
-                <div class="IdMdp">
+                <div class="IdMdp" id="divLogin">
                     <label for="login">Mon Identifiant :</label>
                     <input class="input" type="text" name="login" id="login" required />
                 </div>
                 <?php 
                     if (isset($_GET["err"]) && $_GET["err"]=="login") { echo "ATTENTION MAUVAIS LOGIN";}
                 ?>
-                <div class="IdMdp">
+                <div class="IdMdp" id="divMdp">
                     <label for="mot_de_passe">Mot de Passe :</label>
-                    <input class="input" type="text" name="mot_de_passe" id="mot_de_passe" required />
+                    <input class="input" type="password" name="mot_de_passe" id="mot_de_passe" required />
                 </div>
                 <a href="mdpoublie.html">Mot de passe oublié ?</a>
                 <br><input id="connect" type="submit" value="Connexion"></input>
@@ -32,4 +32,24 @@
         </main>
         
     </body>
+
+    <script>
+            // Fonction pour ajouter la classe focus à la div parent lorsqu'un enfant est focus
+            function addFocusClass(event) {
+                const parentDiv = event.target.parentElement;
+                parentDiv.classList.add('focus');
+            }
+
+            // Fonction pour retirer la classe focus de la div parent lorsque le focus est perdu
+            function removeFocusClass(event) {
+                const parentDiv = event.target.parentElement;
+                parentDiv.classList.remove('focus');
+            }
+
+            // Ajout des gestionnaires d'événements pour le focus et le blur
+            document.getElementById('login').addEventListener('focus', addFocusClass);
+            document.getElementById('login').addEventListener('blur', removeFocusClass);
+            document.getElementById('mot_de_passe').addEventListener('focus', addFocusClass);
+            document.getElementById('mot_de_passe').addEventListener('blur', removeFocusClass);
+        </script>
 </html>
