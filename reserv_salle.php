@@ -1,3 +1,8 @@
+<?php
+include "connexion.php";
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -91,7 +96,13 @@
     <main class="reserver">
 
         <h1>Reservation de salle</h1>
+        <?php
+        // Vérifier si l'utilisateur est connecté
+        if (isset($_SESSION['id_utilisateur'])) {
+            ?>
         <form action="traite-reservation-salle.php" method="POST">
+
+        <input type="hidden" name="id_utilisateur" value="<?php echo $_SESSION['id_utilisateur']; ?>">
             <label for="date_debut_m">Date de début:</label>
             <br><input type="date" name="date_debut_s" required>
             <br><label for="horaire_debut_s">Horaire de début :</label>
@@ -104,8 +115,7 @@
             <br><select name="nom_salle" required>
                 <option value="">- - -</option>
                 <?php
-session_start();
-include "connexion.php";
+
 
 $requete = "SELECT numero_salle FROM salle";
 $stmt = $db->prepare($requete);
@@ -119,6 +129,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             </select>
             <br><input id="reserverSal" type="submit" value="Réserver la salle">
         </form>
+        <?php
+        } else {
+            echo "Erreur : utilisateur non connecté.";
+        }
+        ?>
 
 
     </main>
