@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $requete = "INSERT INTO reservation_salle (date_debut_s, horaire_debut_s, date_fin_s, horaire_fin_s) VALUES (:date_debut_s, :horaire_debut_s, :date_fin_s, :horaire_fin_s)";
 
-    $stmt = $db->prepare($requete);
+    $stmt = $pdo->prepare($requete);
 
     $stmt->bindParam(':date_debut_s', $datedeb);
     $stmt->bindParam(':horaire_debut_s', $horairedeb);
@@ -47,10 +47,10 @@ include "connexion.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
     $utilisateur = $_POST["id_utilisateur"];
-    $datedeb = $_POST["date_debut_m"];
-    $horairedeb = $_POST["horaire_debut_m"];
-    $datefin = $_POST["date_fin_m"];
-    $horairefin = $_POST["horaire_fin_m"];
+    $datedeb = $_POST["date_debut_s"];
+    $horairedeb = $_POST["horaire_debut_s"];
+    $datefin = $_POST["date_fin_s"];
+    $horairefin = $_POST["horaire_fin_s"];
     $salle = $_POST["numero_salle"];
 
     $requete_salle = "SELECT id_salle FROM salle WHERE numero_salle = :numero_salle";
@@ -65,16 +65,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    
     // Corriger la syntaxe de la requête SQL
-    $requete = "INSERT INTO reservation_materiel (date_debut_m, horaire_debut_m, date_fin_m, horaire_fin_m, id_utilisateur, id_materiel, numero_salle) VALUES (:date_debut_m, :horaire_debut_m, :date_fin_m, :horaire_fin_m, :id_utilisateur, :id_materiel, :numero_salle)";
+    $requete = "INSERT INTO reservation_salle (date_debut_s, horaire_debut_s, date_fin_s, horaire_fin_s, id_utilisateur, numero_salle) VALUES (:date_debut_s, :horaire_debut_s, :date_fin_s, :horaire_fin_s, :id_utilisateur,:numero_salle)";
     $stmt = $pdo->prepare($requete);
     $stmt->bindParam(':id_utilisateur', $utilisateur);
-    $stmt->bindParam(':date_debut_m', $datedeb);
-    $stmt->bindParam(':horaire_debut_m', $horairedeb);
-    $stmt->bindParam(':date_fin_m', $datefin);
-    $stmt->bindParam(':horaire_fin_m', $horairefin);
-    $stmt->bindParam(':id_materiel', $id_materiel);
-    $stmt->bindParam(':id_salle', $id_salle);
-    
+    $stmt->bindParam(':date_debut_s', $datedeb);
+    $stmt->bindParam(':horaire_debut_s', $horairedeb);
+    $stmt->bindParam(':date_fin_s', $datefin);
+    $stmt->bindParam(':horaire_fin_s', $horairefin);
+    $stmt->bindParam(':numero_salle', $salle);
+  
+
+ 
 
 
     if ($stmt->execute()) {

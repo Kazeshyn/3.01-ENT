@@ -140,7 +140,7 @@
         <!-- Boutons -->
         <div class="gridcontent">
             <div class="gridbuttons">
-                <a href="https://www.partage.univ-eiffel.fr/mail" class="buttonlink">
+                <a href="" class="buttonlink">
                     <img src="./img/Placeholder Circle.png" alt="" class="icons">
                     <h2 class="titlelink">Mail</h2>
                     <p></p>
@@ -178,8 +178,8 @@
         </div>
         <div class="footwrapper">
             <a href="./mentionLegales.html" class="linkfooter">Mentions légales</a>
-            <a href="./pasCree.html" class="linkfooter">Plan du site</a>
-            <a href="./pasCree.html" class="linkfooter">A propos</a>
+            <a href="./plansite.html" class="linkfooter">Plan du site</a>
+            <a href="./apropos.html" class="linkfooter">A propos</a>
         </div>
     </footer>
 </body>

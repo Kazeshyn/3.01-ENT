@@ -92,7 +92,7 @@
     </header>
 
         <main>
-            <p><a id="retour" href="actu.php">Retour au actu</a></p>
+            <p><a id="retour" href="actu.php">Retour aux actus</a></p>
 
             <h1>Ajouter une actualité ! </h1>
             <form action="traiteActu.php" method="post">

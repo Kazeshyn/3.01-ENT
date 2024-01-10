@@ -86,7 +86,7 @@
             <div class="burgerwrapper">
                 <a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/" class="navlink">Bibliothèque de ressources</a>
                 <a href="https://etudiant.u-pem.fr/ent-services.php" class="navlink">Mes fichiers</a>
-                <a href=./pasCree.html"" class="navlink">Tutoriels</a>
+                <a href="./pasCree.html" class="navlink">Tutoriels</a>
                 <a href="./reservation.php" class="navlink">Réservations</a>
             </div>
             <p class="burgerprewrapper">Cours</p>
@@ -123,7 +123,7 @@
                     <li class="align"><a href="./accueil.php"><img src="./img/logoUniversite2.png" alt=""></a></li>
 
                     <li class="align"><a href="./reservation.php" class="linkcolor navlink">Reservation</a></li>
-                    <li class="deroulant align"><a href="#" class="linkcolor navlink">Cours &ensp;</a>
+                    <li class="deroulant align"><a href="" class="linkcolor navlink">Cours &ensp;</a>
                         <ul class="sous">
                             <li><a href="https://elearning.univ-eiffel.fr/my/">Cours</a></li>
                             <li><a href="https://edt.univ-eiffel.fr/direct/index.jsp?login=visuedt&password=visuedt">Emploi du temps</a></li>

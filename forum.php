@@ -97,7 +97,7 @@
 
                     <li class="align"><a href="./accueil.php"><img src="./img/logoUniversite2.png" alt=""></a></li>
 
-                    <li class="align"><a href="#" class="linkcolor navlink">Reservation</a></li>
+                    <li class="align"><a href="./reservation.php" class="linkcolor navlink">Reservation</a></li>
                     <li class="deroulant align"><a href="#" class="linkcolor navlink">Cours &ensp;</a>
                         <ul class="sous">
                             <li><a href="https://elearning.univ-eiffel.fr/my/">Cours</a></li>

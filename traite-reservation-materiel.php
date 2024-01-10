@@ -23,7 +23,7 @@ $id_materiel = $result_mat['id_materiel'];
     var_dump($id_materiel);
    
     // Corriger la syntaxe de la requête SQL
-    $requete = "INSERT INTO reservation_materiel (date_debut_m, horaire_debut_m, date_fin_m, horaire_fin_m, id_utilisateur, id_materiel) VALUES (:date_debut_m, :horaire_debut_m, :date_fin_m, :horaire_fin_m, :id_utilisateur, :id_materiel)";
+    $requete = "INSERT INTO reservation_materiel(date_debut_m, horaire_debut_m, date_fin_m, horaire_fin_m, id_utilisateur, id_materiel) VALUES (:date_debut_m, :horaire_debut_m, :date_fin_m, :horaire_fin_m, :id_utilisateur, :id_materiel)";
     $stmt = $pdo->prepare($requete);
     $stmt->bindParam(':id_utilisateur', $utilisateur);
     $stmt->bindParam(':date_debut_m', $datedeb);

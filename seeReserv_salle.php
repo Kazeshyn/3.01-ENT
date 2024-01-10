@@ -121,25 +121,25 @@
                 if ($stmt_utilisateur->rowCount() > 0) {
                     $info_user = $stmt_utilisateur->fetch();
             
-                    $id_salle= $reserv["id_salle"];
-                    $requete_salle = "SELECT * FROM salle WHERE id_salle = $id_salle";
-                    $stmt_salle = $pdo->prepare($requete_salle);
-                    $stmt_salle->execute();
+                    $id_salle = $reserv["id_salle"];
+    $requete_salle = "SELECT * FROM salle WHERE id_salle = $id_salle";
+    $stmt_salle = $pdo->prepare($requete_salle);
+    $stmt_salle->execute();
             
                     // Vérifiez si la requête a réussi avant d'accéder aux résultats
                     if ($stmt_salle->rowCount() > 0) {
                         $info_salle = $stmt_salle->fetch();
             ?>
-                        <article>
-                            <div class="text">
-                                <h2><?= $info_user["nom"] ?>  <?= $info_user["prenom"] ?></h2>
-                                <p><i><?= $reserv["date_debut_s"] ?></i></p>
-                                <p><i><?= $reserv["horaire_debut_s"] ?></i></p>
-                                <p><i><?= $reserv["date_fin_s"] ?></i></p>
-                                <p><i><?= $reserv["horaire_fin_s"] ?></i></p>
-                                <p><?= $info_mat["numero_salle"] ?> </p>
-                            </div>
-                        </article>
+                         <article>
+            <div class="text">
+                <h2><?= $info_user["nom"] ?>  <?= $info_user["prenom"] ?></h2>
+                <p><i><?= $reserv["date_debut_s"] ?></i></p>
+                <p><i><?= $reserv["horaire_debut_s"] ?></i></p>
+                <p><i><?= $reserv["date_fin_s"] ?></i></p>
+                <p><i><?= $reserv["horaire_fin_s"] ?></i></p>
+                <p><?= $numero["numero_salle"] ?> </p> <!-- Utilisez $info_salle au lieu de $info_mat -->
+            </div>
+        </article>
             <?php
                     } else {
                         // Gérez le cas où la requête pour le matériel n'a pas renvoyé de résultats

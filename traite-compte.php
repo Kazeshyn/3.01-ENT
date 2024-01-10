@@ -8,7 +8,7 @@ if (isset($_SESSION["login"]) && isset($_POST['infos'])) {
 
     // Mettez à jour la base de données avec les nouvelles informations
     $requeteUpdate = "UPDATE utilisateur SET info_generales=:infos WHERE login=:login";
-    $stmtUpdate = $db->prepare($requeteUpdate);
+    $stmtUpdate = $pdo->prepare($requeteUpdate);
     $stmtUpdate->bindParam(':infos', $nouvellesInfos, PDO::PARAM_STR);
     $stmtUpdate->bindParam(':login', $login, PDO::PARAM_STR);
     $stmtUpdate->execute();
