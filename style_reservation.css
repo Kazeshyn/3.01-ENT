@@ -4,9 +4,11 @@ body {
 }
 
 main {
-    width: 90%;
+    max-width: 90%;
     margin: auto;
-}  
+   margin-bottom:80px;
+}
+
 
 section {
     display: flex;
@@ -31,12 +33,13 @@ h1 {
 }
 
 .salle {
-    background-image: url("./img/temporaire.jpeg");
+    background-image: url("./img/salle.jpg");
 }
 
 .materiel {
-    background-image: url("./img/temporaire.jpeg");
+    background-image: url("./img/materiel.jpg");
 }
+
 
 .aReser {
     color: #FFF;
@@ -55,6 +58,14 @@ h1 {
 .materiel .aReser {
     right: 30%;
 }
+
+.salle h2,
+.materiel h2 {
+    color: white;
+    /* Autres styles de votre choix */
+}
+
+
 
 @media (min-width: 800px){
     section {
