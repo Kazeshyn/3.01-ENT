@@ -13,11 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $materiel = $_POST["nom_materiel"];
 
     $requete_mat = "SELECT id_materiel FROM materiel WHERE nom_materiel = :nom_materiel";
-    $stmt_mat = $pdo->prepare();
-    $result_mat = $stmt_mat->execute();
+$stmt_mat = $pdo->prepare($requete_mat);
+$stmt_mat->bindParam(':nom_materiel', $materiel);
+$stmt_mat->execute();
+$result_mat = $stmt_mat->fetch(PDO::FETCH_ASSOC);
 
-    $id_materiel = $result_mat['id_materiel'];
+$id_materiel = $result_mat['id_materiel'];
 
+    var_dump($id_materiel);
    
     // Corriger la syntaxe de la requête SQL
     $requete = "INSERT INTO reservation_materiel (date_debut_m, horaire_debut_m, date_fin_m, horaire_fin_m, id_utilisateur, id_materiel) VALUES (:date_debut_m, :horaire_debut_m, :date_fin_m, :horaire_fin_m, :id_utilisateur, :id_materiel)";
@@ -38,6 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     window.location.href = "reservation.php";
                 }, 1000); // Retard de 3 secondes
               </script>';
+
+        echo '<noscript>
+              <meta http-equiv="refresh" content="1;url=reservation.php">
+            </noscript>';
     } else {
         echo "Une erreur s'est produite lors de la réservation.";
     }
