@@ -1,3 +1,7 @@
+<?php
+include "connexion.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -14,10 +18,6 @@
 </head>
 
 <body>
-<?php
-session_start();
-include "connexion.php";
-?>
     <header>
         <!-- Header téléphone/tablettes -->
         <nav class="phonetabheader">
@@ -96,7 +96,14 @@ include "connexion.php";
 
 
     <h1>Réservation de matériel</h1>
+    <?php
+        // Vérifier si l'utilisateur est connecté
+        if (isset($_SESSION['id_utilisateur'])) {
+            ?>
+
 <form action="traite-reservation-materiel.php" method="POST">
+<input type="hidden" name="id_utilisateur" value="<?php echo $_SESSION['id_utilisateur']; ?>">
+
 
 
     <label for="date_debut_m">Date de début:</label>
@@ -124,6 +131,12 @@ include "connexion.php";
 
     <br><input id="reserverMat" type="submit" value="Réserver le matériel">
 </form>
+<?php
+        } else {
+            echo "Erreur : utilisateur non connecté.";
+        }
+        ?>
+
 
 
     </main>
