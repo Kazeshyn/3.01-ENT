@@ -36,6 +36,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['admin']) && $_SESSION['admin']
 
     if ($stmt->execute()) {
         echo "La note a été ajoutée avec succès.";
+        header("Location: note.php");
     } else {
         echo "Erreur lors de l'ajout de la note.";
     }

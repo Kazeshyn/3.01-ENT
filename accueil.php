@@ -12,6 +12,27 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
     <script src="script-burger.js" defer></script>
     <script src="script-sidenav.js" defer></script>
+    <?php
+    session_start();
+    include 'connexion.php';
+
+    // Vérifier si l'utilisateur est connecté
+    if (!isset($_SESSION['login'])) {
+        // Rediriger vers la page de connexion ou afficher un message d'erreur
+        header("Location: index.php");
+        exit();
+    }
+
+    $login = $_SESSION['login'];
+
+    // Récupérer les trois dernières notes de l'utilisateur connecté
+    $sql_last_notes = "SELECT nom_cours, note FROM note WHERE login = :login LIMIT 3";
+    $stmt_last_notes = $pdo->prepare($sql_last_notes);
+    $stmt_last_notes->bindParam(':login', $login, PDO::PARAM_STR);
+    $stmt_last_notes->execute();
+
+    $last_notes = $stmt_last_notes->fetchAll(PDO::FETCH_ASSOC);
+    ?>
     <title>ENT - Accueil</title>
 </head>
 
@@ -19,7 +40,7 @@
     <header>
         <!-- Header téléphone/tablettes -->
         <nav class="phonetabheader">
-            <a href="" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png" alt="Retourner à l'accueil (page actuelle)"></a>
+            <a href="./accueil.php" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png" alt="Retourner à l'accueil (page actuelle)"></a>
             <div class="headergroupphone">
                 <a href="" class="darkm">☀️</a>
                 <img src="./img/burger_menu.png" alt="" id="button">
@@ -29,26 +50,26 @@
         <div class="menu menuoff" id="menu">
             <p class="burgerprewrapper">Communication</p>
             <div class="burgerwrapper">
-                <a href="" class="navlink">Mail</a>
-                <a href="" class="navlink">Forum</a>
-                <a href="" class="navlink">Actualité</a>
+                <a href="https://www.partage.univ-eiffel.fr/mail" class="navlink">Mail</a>
+                <a href="./forum.php" class="navlink">Forum</a>
+                <a href="./actu.php" class="navlink">Actualité</a>
             </div>
             <a href="" class="burgerprewrapper">Restauration</a>
             <p class="burgerprewrapper">Ressources</p>
             <div class="burgerwrapper">
-                <a href="" class="navlink">Bibliothèque de ressources</a>
-                <a href="" class="navlink">Mes fichiers</a>
+                <a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/" class="navlink">Bibliothèque de ressources</a>
+                <a href="https://etudiant.u-pem.fr/ent-services.php" class="navlink">Mes fichiers</a>
                 <a href="" class="navlink">Tutoriels</a>
-                <a href="" class="navlink">Réservations</a>
+                <a href="./reservation.php" class="navlink">Réservations</a>
             </div>
             <p class="burgerprewrapper">Cours</p>
             <div class="burgerwrapper">
-                <a href="" class="navlink">Cours</a>
-                <a href="" class="navlink">Emploi du temps</a>
-                <a href="" class="navlink">Notes</a>
-                <a href="" class="navlink">Agenda</a>
+                <a href="https://elearning.univ-eiffel.fr/my/" class="navlink">Cours</a>
+                <a href="https://edt.univ-eiffel.fr/direct/index.jsp?login=visuedt&password=visuedt" class="navlink">Emploi du temps</a>
+                <a href="./note.php" class="navlink">Notes</a>
+                <a href="https://elearning.univ-eiffel.fr/calendar/view.php?view=upcoming" class="navlink">Agenda</a>
             </div>
-            <a href="" class="burgerprewrapper">Mon compte</a>
+            <a href="./compte.php" class="burgerprewrapper">Mon compte</a>
         </div>
         <!-- Header ordinateur -->
         <nav class="desktopheader">
@@ -58,32 +79,32 @@
                 <ul>
                     <li class="deroulant align"><a href="#" class="linkcolor navlink">Communication &ensp;</a>
                         <ul class="sous">
-                            <li><a href="#">Mail</a></li>
-                            <li><a href="#">Forum</a></li>
-                            <li><a href="#">Actualité</a></li>
+                            <li><a href="https://www.partage.univ-eiffel.fr/mail">Mail</a></li>
+                            <li><a href="./forum.php">Forum</a></li>
+                            <li><a href="./actu.php">Actualité</a></li>
                         </ul>
                     </li>
                     <li class="align"><a href="#" class="linkcolor navlink">Restauration</a></li>
                     <li class="deroulant align"><a href="#" class="linkcolor navlink">Ressources &ensp;</a>
                         <ul class="sous">
-                            <li><a href="#">Bibliothèque de ressources</a></li>
+                            <li><a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/">Bibliothèque de ressources</a></li>
                             <li><a href="#">Tutoriels</a></li>
-                            <li><a href="#">Mes fichiers</a></li>
+                            <li><a href="https://etudiant.u-pem.fr/ent-services.php">Mes fichiers</a></li>
                         </ul>
                     </li>
 
-                    <li class="align"><a href="#"><img src="./img/logoUniversite2.png" alt=""></a></li>
+                    <li class="align"><a href="./accueil.php"><img src="./img/logoUniversite2.png" alt=""></a></li>
 
                     <li class="align"><a href="#" class="linkcolor navlink">Reservation</a></li>
                     <li class="deroulant align"><a href="#" class="linkcolor navlink">Cours &ensp;</a>
                         <ul class="sous">
-                            <li><a href="#">Cours</a></li>
-                            <li><a href="#">Emploi du temps</a></li>
-                            <li><a href="#">Notes</a></li>
-                            <li><a href="#">Agenda</a></li>
+                            <li><a href="https://elearning.univ-eiffel.fr/my/">Cours</a></li>
+                            <li><a href="https://edt.univ-eiffel.fr/direct/index.jsp?login=visuedt&password=visuedt">Emploi du temps</a></li>
+                            <li><a href="./note.php">Notes</a></li>
+                            <li><a href="https://elearning.univ-eiffel.fr/calendar/view.php?view=upcoming">Agenda</a></li>
                         </ul>
                     </li>
-                    <li class="align"><a href="#" class="linkcolor navlink">Mon compte</a></li>
+                    <li class="align"><a href="./compte.php" class="linkcolor navlink">Mon compte</a></li>
                 </ul>
             </div>
         </nav>
@@ -91,6 +112,7 @@
 
     <section>
         <!-- Menu latéral -->
+
         <nav class="sidenav" id="menuside">
             <div class="opensidebutton" id="sidebar">
                 ↔
@@ -105,48 +127,53 @@
             </div>
             <div class="infosidenote" id="infosidenote">
                 <h3 class="titlelinkrecap">Notes</h3>
-                <div class="sideelementoff" id="generateElement">Exemple1 - 17/20</div>
-                <div class="sideelementoff" id="generateElement">Exemple1 - 2/10</div>
+                <?php
+                foreach ($last_notes as $last_note) {
+                    $nom_cours = $last_note['nom_cours'];
+                    $note_utilisateur = $last_note['note'];
+                    echo "<div class='sideelementoff' id='generateElement'>$nom_cours - $note_utilisateur/20</div>";
+                }
+                ?>
             </div>
         </nav>
         <!-- Boutons -->
         <div class="gridcontent">
-        <div class="gridbuttons">
-            <a href="" class="buttonlink">
-                <img src="./img/Placeholder Circle.png" alt="" class="icons">
-                <h2 class="titlelink">Mail</h2>
-                <p></p>
-            </a>
-            <a href="" class="buttonlink">
-                <img src="./img/Placeholder Circle.png" alt="" class="icons">
-                <h2 class="titlelink">Cours</h2>
-                <p></p>
-            </a>
-            <a href="" class="buttonlink">
-                <img src="./img/Placeholder Circle.png" alt="" class="icons">
-                <h2 class="titlelink">Réservations</h2>
-                <p></p>
-            </a>
-            <a href="" class="buttonlink">
-                <img src="./img/Placeholder Circle.png" alt="" class="icons">
-                <h2 class="titlelink">Notes</h2>
-                <p></p>
-            </a>
-        </div>
-        <!-- EDT -->
-        <div class="container">
-            <h2 class="edttxt">Emploi du temps</h2>
-            <div id="events-container"></div>
-        </div>
+            <div class="gridbuttons">
+                <a href="" class="buttonlink">
+                    <img src="./img/Placeholder Circle.png" alt="" class="icons">
+                    <h2 class="titlelink">Mail</h2>
+                    <p></p>
+                </a>
+                <a href="" class="buttonlink">
+                    <img src="./img/Placeholder Circle.png" alt="" class="icons">
+                    <h2 class="titlelink">Cours</h2>
+                    <p></p>
+                </a>
+                <a href="" class="buttonlink">
+                    <img src="./img/Placeholder Circle.png" alt="" class="icons">
+                    <h2 class="titlelink">Réservations</h2>
+                    <p></p>
+                </a>
+                <a href="" class="buttonlink">
+                    <img src="./img/Placeholder Circle.png" alt="" class="icons">
+                    <h2 class="titlelink">Notes</h2>
+                    <p></p>
+                </a>
+            </div>
+            <!-- EDT -->
+            <div class="container">
+                <h2 class="edttxt">Emploi du temps</h2>
+                <div id="events-container"></div>
+            </div>
         </div>
     </section>
     <!-- Footer -->
     <footer>
         <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
         <div class="footwrapper">
-            <a href="" class="linkfooter">Site de l'université</a>
-            <a href="" class="linkfooter">Réseau des anciens</a>
-            <a href="" class="linkfooter">Maison des étudiants</a>
+            <a href="https://www.univ-gustave-eiffel.fr" class="linkfooter" target="_blank">Site de l'université</a>
+            <a href="https://lcs.univ-gustave-eiffel.fr/vie-etudiante/reseaux-detudiants/reseaux-anciens-etudiants" class="linkfooter" target="_blank">Réseau des anciens</a>
+            <a href="https://www.facebook.com/MDEUGE/?locale=fr_FR" class="linkfooter" target="_blank">Maison des étudiants</a>
         </div>
         <div class="footwrapper">
             <a href="" class="linkfooter">Mentions légales</a>

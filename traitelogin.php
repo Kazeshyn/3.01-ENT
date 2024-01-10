@@ -1,9 +1,9 @@
 <?php
 session_start();
 include "connexion.php";
-$db->query('SET NAMES utf8');
+$pdo->query('SET NAMES utf8');
 $requete="SELECT * FROM utilisateur WHERE login=:login";
-$stmt=$db->prepare($requete);
+$stmt=$pdo->prepare($requete);
 $stmt->bindParam(':login',$_GET["login"], PDO::PARAM_STR);
 $stmt->execute();
 
@@ -13,6 +13,7 @@ if ($stmt->rowcount()==1){
 	// Vérification du mot de passe
 	if (password_verify($_GET["mot_de_passe"],$result["mot_de_passe"])){
 		$_SESSION["login"]=$_GET["login"];
+		$_SESSION["id_utilisateur"]=$result["id_utilisateur"];
 
 		// Vérification si l'utilisateur est administrateur
         if ($result["isAdmin"]==1) {
@@ -24,14 +25,10 @@ if ($stmt->rowcount()==1){
         header('Location: accueil.php');
 
 	} else {
-		header ('Location:login.php?err=mot_de_passe');
+		header ('Location:index.php?err=mot_de_passe');
 	}
 
 } else {
-	header ('Location:login.php?err=login');
+	header ('Location:index.php?err=login');
 }
-
-
 ?>
-
-

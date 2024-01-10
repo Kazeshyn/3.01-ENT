@@ -47,6 +47,20 @@ main {
     margin: 0;
 }  
 
+#addMenu, a#addMenu\ add2 {
+    background-color: #4B4BFF;
+    color: #FFF;
+    padding: 5px 10px 28px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+.modal #addMenu {
+    margin-left: 100px;
+}
+
 
 h1 {
     text-align: center;
@@ -79,9 +93,15 @@ section {
     gap: 15px;
 }
 
+.lieux {
+    min-height: 59vh;
+    margin-bottom: 20px;
+}
+
 .resto {
     background-color: #dedede;
     width: 195px;
+    height: 250px;
     margin: auto;
     padding: 20px;
     border-radius: 10px;
@@ -94,13 +114,21 @@ section {
 }
 
 .etat {
-    background-color: green;
     width: 25px;
     height: 25px;
-    border-radius: 50%;
+    border-radius: 100px;
+}
+
+.vert {
+    background-color: green;
+}
+
+.rouge {
+    background-color: red;
 }
 
 .resto h2 {
+    width: 120px;
     font-weight: 700;
     font-size: 1.3rem;
     margin: 0;
@@ -113,6 +141,9 @@ section {
 .resto a {
     color: #000;
 }
+
+
+
 
 @media (min-width: 900px) {
     main {
@@ -128,8 +159,13 @@ section {
         display: block;
         order: 2;
         width: 45%;
+        max-width: 545px;
         background-color: #8e8e8e;
         padding: 4%;
+    }
+
+    .SecondNav h2 {
+        margin: 0;
     }
 
     .SecondNav div {
@@ -145,6 +181,7 @@ section {
     }
 
     .SecondNav ul {
+        display: block;
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -153,9 +190,14 @@ section {
     
     .sectionPrincipal {
         padding: 30px;
+        min-width: 63%;
     }
 
     .modal {
+        display: none;
+    }
+
+    a#addMenu\ add2 {
         display: none;
     }
 }

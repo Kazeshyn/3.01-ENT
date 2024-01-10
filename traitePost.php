@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Ajouter l'article à la base de données
     $requete_post = "INSERT INTO post (titre_post, contenu_post, categorie_post, id_utilisateur, date_post) VALUES (:titre_post, :contenu_post, :categorie_post, :id_utilisateur, CURRENT_DATE)";
-    $stmt_post = $db->prepare($requete_post);
+    $stmt_post = $pdo->prepare($requete_post);
 
     // Lier les paramètres
     $stmt_post->bindParam(':titre_post', $titre, PDO::PARAM_STR);

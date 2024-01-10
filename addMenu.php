@@ -1,25 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-    include 'connexion.php';
     session_start();
-
-    $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
-
-        // Vérifier si l'utilisateur est connecté ou non
-        if (isset($_SESSION['login'])) {
-            // Utilisateur connecté
-            $nom_utilisateur = $_SESSION['login'];
-            $bouton_texte = "Se déconnecter";
-            $lien_deconnexion = "logout.php";
-        } else {
-            // Utilisateur non connecté
-            $bouton_texte = "Se connecter";
-            $lien_deconnexion = "login.php";
-        }
-
-    $requete = "SELECT * FROM actualite ORDER BY date_actu DESC";
-
 ?>
 
 <html lang="fr">
@@ -30,36 +12,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style_footerheader.css">
-        <link rel="stylesheet" href="style_actu.css">
-        <style>
-            article img {
-                object-fit: cover;
-            }
-            .supButton {
-                background-color: #FFF;
-                border: red 2px solid;
-                color: rgb(233, 1, 1);
-                padding: 5px 10px;
-                border-radius: 5px;
-                margin-bottom: 5px;
-                margin-top: 5px;
-            }
-        </style>
-        <title>Actualités - ENT</title>
-
-        <script src="script-burger.js" defer></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Sélectionnez le sélecteur par son ID
-                var themeSelect = document.getElementById('theme');
-
-                // Ajoutez un gestionnaire d'événements pour mettre à jour le libellé
-                themeSelect.addEventListener('change', function () {
-                    var selectedOption = themeSelect.options[themeSelect.selectedIndex];
-                    themeSelect.options[0].text = selectedOption.text;
-                });
-            });
-        </script>
+        <link rel="stylesheet" href="style_addMenu.css">
+        <title>Ajouter un menu à l'ENT</title>
     </head>
 
     <body>
@@ -136,68 +90,27 @@
         </nav>
     </header>
 
+        <main>
+            <p><a id="retour" href="restauration.php">Retour à la page restauration</a></p>
 
-
-    <main>
-    <h1>Actualités</h1>
-    <!-- Ajout le bouton si l'admin est connecté -->
-    <section class="option">
-        <?php if ($isAdmin): ?>
-            <a id="addActu" href="addActu.php">Ajouter une actu</a>
-        <?php endif; ?>
-        <form  method="get" id="themeForm" action="actu.php">
-            <select name="theme" id="theme" onchange="this.form.submit()">
-                <option value="" <?php echo ($filtre === '') ? 'selected' : ''; ?>>--- Filtrer par ---</option>
-                <option value="Tous" <?php echo ($filtre === 'Tous') ? 'selected' : ''; ?>>Tous</option>
-                <option value="sport" <?php echo ($filtre === 'sport') ? 'selected' : ''; ?>>Sport</option>
-                <option value="repas" <?php echo ($filtre === 'repas') ? 'selected' : ''; ?>>Repas</option>
-            </select>
-        </form>
-
-    </section>
-
-    <section>
-        <?php
-            // Vérifier si un filtre a été sélectionné
-            $theme = isset($_GET['theme']) ? $_GET['theme'] : '';
-
-            // Construire la requête SQL en fonction du filtre
-            $requete = "SELECT * FROM actualite";
-            if (!empty($theme) && $theme !== 'Tous') {
-                $requete .= " WHERE theme_actu = :theme";
-            }
-            $requete .= " ORDER BY date_actu DESC";
-
-            // Préparer et exécuter la requête
-            $stmt = $pdo->prepare($requete);
-            if (!empty($theme) && $theme !== 'Tous') {
-                $stmt->bindParam(':theme', $theme, PDO::PARAM_STR);
-            }
-            $stmt->execute();
-            $result = $stmt->fetchAll();
-
-            // Afficher les actualités filtrées
-            foreach ($result as $actu) { 
-        ?>
-            <article>
-                <img src="<?= $actu["url_actu"] ?>" alt="">
-                <div class="text">
-                    <h2><?= $actu["titre_actu"] ?></h2>
-                    <p><i><?= $actu["date_actu"] ?></i></p>
-                    <p><?= $actu["contenu_actu"] ?> </p>
-                    <?php if ($isAdmin): ?>
-                        <form action="supActu.php" method="post">
-                            <input type="hidden" name="id_actu" value="<?= $actu["id_actu"] ?>">
-                            <input class="supButton" type="submit" value="Supprimer">
-                        </form>
-                    <?php endif; ?>
-                </div>
-            </article>
-        <?php } ?>
-    </section>
-</main>
-
-
+            <h1>Ajouter un menu !</h1>
+            <form action="traiteMenu.php" method="post">
+                
+                <label for="nom">Nom du Menu</label>
+                <br><input id="nom" type=text name="nom"> 
+                <br><label for="entree">Entrée :</label>
+                <br><input type="text" id="entree" name="entree" required></input>
+                <br><label for="plat1">Plat 1 :</label>
+                <br><input type="text" id="plat1" name="plat1" required></input>
+                <br><label for="plat2">Plat 2 :</label>
+                <br><input type="text" id="plat2" name="plat2" required></input>
+                <br><label for="dessert">Dessert :</label>
+                <br><input type="text" id="dessert" name="dessert" required></input>
+                <br><label for="date">Date :</label>
+                <br><input id="date" type=date name="date" required>
+                <br><input id="submit" type=submit value= "OK">
+            </form>
+        </main>
         <footer>
             <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
             <div class="footwrapper">
@@ -212,31 +125,4 @@
             </div>
         </footer>
     </body>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var themeSelect = document.getElementById('theme');
-
-                // Récupérer le paramètre de l'URL
-                var urlParams = new URLSearchParams(window.location.search);
-                var selectedTheme = urlParams.get('theme');
-
-                // Si un paramètre existe, sélectionnez l'option appropriée
-                if (selectedTheme) {
-                    var options = themeSelect.options;
-                    for (var i = 0; i < options.length; i++) {
-                        if (options[i].value === selectedTheme) {
-                            themeSelect.selectedIndex = i;
-                            break;
-                        }
-                    }
-                }
-
-                // Ajouter un gestionnaire d'événements pour mettre à jour le libellé
-                themeSelect.addEventListener('change', function () {
-                    var selectedOption = themeSelect.options[themeSelect.selectedIndex];
-                    themeSelect.options[0].text = selectedOption.text;
-                });
-            });
-        </script>
-
 </html>
