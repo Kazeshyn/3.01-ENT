@@ -118,7 +118,7 @@ session_start();
 
 
 $requete = "SELECT numero_salle FROM salle";
-$stmt = $db->prepare($requete);
+$stmt = $pdo->prepare($requete);
 $stmt->execute();
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
