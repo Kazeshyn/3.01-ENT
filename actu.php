@@ -6,6 +6,18 @@
 
     $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
 
+        // Vérifier si l'utilisateur est connecté ou non
+        if (isset($_SESSION['login'])) {
+            // Utilisateur connecté
+            $nom_utilisateur = $_SESSION['login'];
+            $bouton_texte = "Se déconnecter";
+            $lien_deconnexion = "logout.php";
+        } else {
+            // Utilisateur non connecté
+            $bouton_texte = "Se connecter";
+            $lien_deconnexion = "login.php";
+        }
+
     $requete = "SELECT * FROM actualite ORDER BY date_actu DESC";
 
 ?>
@@ -19,20 +31,35 @@
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style_footerheader.css">
         <link rel="stylesheet" href="style_actu.css">
+        <style>
+            article img {
+                object-fit: cover;
+            }
+            .supButton {
+                background-color: #FFF;
+                border: red 2px solid;
+                color: rgb(233, 1, 1);
+                padding: 5px 10px;
+                border-radius: 5px;
+                margin-bottom: 5px;
+                margin-top: 5px;
+            }
+        </style>
         <title>Actualités - ENT</title>
 
+        <script src="script-burger.js" defer></script>
         <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Sélectionnez le sélecteur par son ID
-            var themeSelect = document.getElementById('theme');
+            document.addEventListener('DOMContentLoaded', function () {
+                // Sélectionnez le sélecteur par son ID
+                var themeSelect = document.getElementById('theme');
 
-            // Ajoutez un gestionnaire d'événements pour mettre à jour le libellé
-            themeSelect.addEventListener('change', function () {
-                var selectedOption = themeSelect.options[themeSelect.selectedIndex];
-                themeSelect.options[0].text = selectedOption.text;
+                // Ajoutez un gestionnaire d'événements pour mettre à jour le libellé
+                themeSelect.addEventListener('change', function () {
+                    var selectedOption = themeSelect.options[themeSelect.selectedIndex];
+                    themeSelect.options[0].text = selectedOption.text;
+                });
             });
-        });
-    </script>
+        </script>
     </head>
 
     <body>
@@ -111,10 +138,8 @@
     </header>
 
 
-
-
     <main>
-    <h1>Actualités </h1>
+    <h1>Actualités</h1>
     <!-- Ajout le bouton si l'admin est connecté -->
     <section class="option">
         <?php if ($isAdmin): ?>
@@ -155,11 +180,17 @@
             foreach ($result as $actu) { 
         ?>
             <article>
-                <img src="img/<?= $actu["url_actu"] ?>" alt="">
+                <img src="<?= $actu["url_actu"] ?>" alt="">
                 <div class="text">
                     <h2><?= $actu["titre_actu"] ?></h2>
                     <p><i><?= $actu["date_actu"] ?></i></p>
                     <p><?= $actu["contenu_actu"] ?> </p>
+                    <?php if ($isAdmin): ?>
+                        <form action="supActu.php" method="post">
+                            <input type="hidden" name="id_actu" value="<?= $actu["id_actu"] ?>">
+                            <input class="supButton" type="submit" value="Supprimer">
+                        </form>
+                    <?php endif; ?>
                 </div>
             </article>
         <?php } ?>
@@ -181,31 +212,31 @@
             </div>
         </footer>
     </body>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var themeSelect = document.getElementById('theme');
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var themeSelect = document.getElementById('theme');
 
-        // Récupérer le paramètre de l'URL
-        var urlParams = new URLSearchParams(window.location.search);
-        var selectedTheme = urlParams.get('theme');
+                // Récupérer le paramètre de l'URL
+                var urlParams = new URLSearchParams(window.location.search);
+                var selectedTheme = urlParams.get('theme');
 
-        // Si un paramètre existe, sélectionnez l'option appropriée
-        if (selectedTheme) {
-            var options = themeSelect.options;
-            for (var i = 0; i < options.length; i++) {
-                if (options[i].value === selectedTheme) {
-                    themeSelect.selectedIndex = i;
-                    break;
+                // Si un paramètre existe, sélectionnez l'option appropriée
+                if (selectedTheme) {
+                    var options = themeSelect.options;
+                    for (var i = 0; i < options.length; i++) {
+                        if (options[i].value === selectedTheme) {
+                            themeSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
                 }
-            }
-        }
 
-        // Ajouter un gestionnaire d'événements pour mettre à jour le libellé
-        themeSelect.addEventListener('change', function () {
-            var selectedOption = themeSelect.options[themeSelect.selectedIndex];
-            themeSelect.options[0].text = selectedOption.text;
-        });
-    });
-</script>
+                // Ajouter un gestionnaire d'événements pour mettre à jour le libellé
+                themeSelect.addEventListener('change', function () {
+                    var selectedOption = themeSelect.options[themeSelect.selectedIndex];
+                    themeSelect.options[0].text = selectedOption.text;
+                });
+            });
+        </script>
 
 </html>

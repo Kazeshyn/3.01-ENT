@@ -8,6 +8,24 @@
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style_connect.css">
         <title>Connexion - ENT</title>
+
+        <style>
+            .IdMdp.focus, .IdMdp:hover {
+                border: 2px solid #3498db;
+            }
+            input:focus {
+                outline: none;
+            }
+            #connect:hover {
+                background-color: #FFF;
+                color: #3498db;
+                border: 2px solid #3498db;
+                padding: 7px 13px;
+            }
+            a:hover {
+                color: #3498db;
+            }
+        </style>
     </head>
     <body>
         <main>
