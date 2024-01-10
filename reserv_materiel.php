@@ -1,6 +1,7 @@
 <?php
 include "connexion.php";
 session_start();
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -102,9 +103,8 @@ session_start();
             ?>
 
 <form action="traite-reservation-materiel.php" method="POST">
-<input type="hidden" name="id_utilisateur" value="<?php echo $_SESSION['id_utilisateur']; ?>">
-
-
+        
+    <input type="hidden" name="id_utilisateur" value="<?php echo $_SESSION['id_utilisateur']; ?>">
 
     <label for="date_debut_m">Date de début:</label>
     <br><input type="date" name="date_debut_m" required>
@@ -120,7 +120,7 @@ session_start();
         <option value="">- - -</option>
         <?php
         $requete = "SELECT nom_materiel FROM materiel";
-        $stmt = $db->prepare($requete);
+        $stmt = $pdo->prepare($requete);
         $stmt->execute();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

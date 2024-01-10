@@ -10,15 +10,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $horairedeb = $_POST["horaire_debut_m"];
     $datefin = $_POST["date_fin_m"];
     $horairefin = $_POST["horaire_fin_m"];
+    $materiel = $_POST["nom_materiel"];
+
+    $requete_mat = "SELECT id_materiel FROM materiel WHERE nom_materiel = :nom_materiel";
+    $stmt_mat = $pdo->prepare();
+    $result_mat = $stmt_mat->execute();
+
+    $id_materiel = $result_mat['id_materiel'];
+
    
     // Corriger la syntaxe de la requête SQL
-    $requete = "INSERT INTO reservation_materiel (date_debut_m, horaire_debut_m, date_fin_m, horaire_fin_m, id_utilisateur) VALUES (:date_debut_m, :horaire_debut_m, :date_fin_m, :horaire_fin_m, :id_utilisateur)";
-    $stmt = $db->prepare($requete);
+    $requete = "INSERT INTO reservation_materiel (date_debut_m, horaire_debut_m, date_fin_m, horaire_fin_m, id_utilisateur, id_materiel) VALUES (:date_debut_m, :horaire_debut_m, :date_fin_m, :horaire_fin_m, :id_utilisateur, :id_materiel)";
+    $stmt = $pdo->prepare($requete);
     $stmt->bindParam(':id_utilisateur', $utilisateur);
     $stmt->bindParam(':date_debut_m', $datedeb);
     $stmt->bindParam(':horaire_debut_m', $horairedeb);
     $stmt->bindParam(':date_fin_m', $datefin);
     $stmt->bindParam(':horaire_fin_m', $horairefin);
+    $stmt->bindParam(':id_materiel', $id_materiel);
   
     if ($stmt->execute()) {
         echo "La réservation a bien été effectuée.";
