@@ -4,6 +4,7 @@ include "connexion.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire
+    var_dump($_POST);
     $titre = $_POST['titre'];
     $contenu = $_POST['contenu'];
     $image = $_POST['image'];
@@ -11,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Ajouter l'article à la base de données
     $requete_actu = "INSERT INTO actualite (titre_actu, contenu_actu, url_actu, theme_actu, date_actu) VALUES (:titre_actu, :contenu_actu, :url_actu, :theme_actu, CURRENT_DATE)";
-    $stmt_actu = $db->prepare($requete_actu);
+    $stmt_actu = $pdo->prepare($requete_actu);
 
     // Lier les paramètres
     $stmt_actu->bindParam(':titre_actu', utf8_encode($titre), PDO::PARAM_STR);

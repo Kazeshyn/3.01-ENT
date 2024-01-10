@@ -11,6 +11,7 @@ main {
     width: 90%;
     margin: auto;
     margin-bottom: 10px;
+    min-height: 83vh;
 } 
 
 #retour {
@@ -63,7 +64,4 @@ input, select, textarea {
         margin-bottom: 20px;
     }
 
-    main {
-        height: 76vh;
-    }
 }

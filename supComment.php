@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Supprimer le commentaire de la base de données
         $requete_suppression_comment = "DELETE FROM commentaire WHERE id_commentaire = :id_commentaire";
-        $stmt_suppression_comment = $db->prepare($requete_suppression_comment);
+        $stmt_suppression_comment = $pdo->prepare($requete_suppression_comment);
         $stmt_suppression_comment->bindParam(':id_commentaire', $id_commentaire, PDO::PARAM_INT);
     
         if ($stmt_suppression_comment->execute()) {

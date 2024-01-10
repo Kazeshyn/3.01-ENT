@@ -39,9 +39,10 @@ a.logoheader {
 div.menu {
 	position: absolute;
 	z-index: 3;
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
 	height: fit-content;
 	background-color: rgb(255, 255, 255);
-	-webkit-box-shadow: 0px 9px 38px 5px rgba(0, 0, 0, 0.5);
 	box-shadow: 0px 9px 38px 5px rgba(0, 0, 0, 0.5);
 	flex-direction: column;
 	align-items: flex-start;
@@ -164,15 +165,17 @@ p {
 		align-items: center;
 		margin: 0 auto;
 		background-color: #2323A5;
-		position: sticky;
+		position: -webkit-sticky;
+		position: relative;
 		top: 0px;
+		z-index: 1000;
 	}
 
 	footer {
 		height: 90px;
 	}
 
-	nav {
+	nav.header {
 		display: flex;
 		justify-content: center;
 		width: 100%;
@@ -180,6 +183,7 @@ p {
 		align-items: center;
 		margin: 0 auto;
 		background-color: #2323A5;
+		position: -webkit-sticky;
 		position: sticky;
 		top: 0px;
 	}
@@ -212,17 +216,17 @@ p {
 		list-style-type: none;
 	}
 
-	nav input[type=checkbox]:checked + ul {
+	header nav input[type=checkbox]:checked + ul {
 		display: flex;
 		flex-flow: column wrap;
 	}
 
-	nav ul li {
+	header nav ul li {
 		flex: 1 1 auto;
 		text-align: center;
 	}
 
-	nav > div > ul > li > a {
+	 nav > div > ul > li > a {
 		color: white;
 	}
 
@@ -259,12 +263,12 @@ p {
 		display: none;
 	}
 
-	nav input[type=checkbox]:checked + ul, nav ul {
+	nav input[type=checkbox]:checked + ul, header nav ul {
 		display: flex;
 		flex-flow: row wrap;
 	}
 
-	nav ul li {
+	header nav ul li {
 		position: relative;
 	}
 
@@ -288,7 +292,6 @@ p {
 	nav > div > ul li:hover .sous {
 		display: flex;
 		flex-flow: column wrap;
-		z-index: 1000;
 		padding: 0;
 	}
 

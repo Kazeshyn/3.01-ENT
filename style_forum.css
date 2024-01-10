@@ -152,6 +152,15 @@ article p {
     color: #000;
 }
 
+.supButton {
+    background-color: #FFF;
+    border: red 2px solid;
+    color: rgb(233, 1, 1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
 @media (min-width:550px){
     main {
         width: 60%;
