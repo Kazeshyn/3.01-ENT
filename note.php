@@ -31,6 +31,8 @@
     if (isset($_SESSION['login'])) {
         $login = $_SESSION['login'];
 
+        $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
+
         $sql = "SELECT nom_cours, note FROM note WHERE login = :login";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':login', $login, PDO::PARAM_STR);
@@ -154,12 +156,50 @@
         </script>
         <h2 class="titre-note-detail">Notes détaillées</h2>
         <div class="note-detail">
-            <p>Eval du 17/11 - Note : 1.375986/20</p>
-            <p>Eval du 17/11 - Note : 1.375986/20</p>
-            <p>Eval du 17/11 - Note : 1.375986/20</p>
-            <p>Eval du 17/11 - Note : 1.375986/20</p>
-            <p>Eval du 17/11 - Note : 1.375986/20</p>
+            <?php
+            // Récupérer les notes de l'utilisateur connecté
+            $sql_notes_utilisateur = "SELECT nom_cours, note, detail_note FROM note WHERE login = :login";
+            $stmt_notes_utilisateur = $pdo->prepare($sql_notes_utilisateur);
+            $stmt_notes_utilisateur->bindParam(':login', $login, PDO::PARAM_STR);
+            $stmt_notes_utilisateur->execute();
+
+            while ($row_note = $stmt_notes_utilisateur->fetch(PDO::FETCH_ASSOC)) {
+                $nom_cours = $row_note['nom_cours'];
+                $note_utilisateur = $row_note['note'];
+                $detail_note = $row_note['detail_note'];
+
+                // Afficher le détail de la note avant la matière
+                echo "<p>$detail_note - $nom_cours - $note_utilisateur/20</p>";
+            }
+            ?>
         </div>
+        </div>
+        <?php if ($isAdmin) : ?>
+            <h2>Insérer une note :</h1>
+                <form action="traiteNote.php" method="post"> <!-- Ajout de method="post" -->
+                    <label for="matiere">Matière :</label>
+                    <br><select name="matiere" id="matiere">
+                        <<option value="Integration">Intégration</option>
+                            <option value="cnumerique">Culture Numérique</option>
+                            <option value="anglais">Anglais</option>
+                            <option value="audiovisuel">Audiovisuel</option>
+                            <option value="developpementweb">Developpement Web</option>
+                            <option value="productiongraphique">Production Graphique</option>
+                            <option value="cartistique">Culture Artistique</option>
+                            <option value="developpementback">Développement Back</option>
+                    </select>
+                    <br>
+                    <label for="login">Nom de l'élève :</label>
+                    <br><input type="text" name="login" required> <!-- Ajout de name="login" -->
+                    <br>
+                    <label for="note">Note :</label>
+                    <br><input type="number" name="note" required><br>
+                    <label for="detail">Détails :</label>
+                    <br><input type="text" name="detail" required><br>
+                    <!-- Ajout de name="note" et type="number" -->
+                    <input type="submit">
+                </form>
+            <?php endif; ?>
     </section>
     <footer>
         <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
