@@ -288,6 +288,7 @@ p {
 	nav > div > ul li:hover .sous {
 		display: flex;
 		flex-flow: column wrap;
+		z-index: 1000;
 		padding: 0;
 	}
 

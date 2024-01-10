@@ -7,26 +7,76 @@
     <title>Note</title>
     <link rel="stylesheet" href="style_note.css">
     <link rel="stylesheet" href="style_footerheader.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
-    <link rel=" preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css"> -->
     <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css">
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
+    <?php
+    session_start(); // Démarrer la session
 
+    $host = 'localhost';
+    $dbname = 'ent';
+    $username = 'root';
+    $password = '';
 
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    } catch (PDOException $e) {
+        die("Erreur de connexion à la base de données: " . $e->getMessage());
+    }
+
+    // Vérifier si l'utilisateur est connecté
+    if (isset($_SESSION['login'])) {
+        $login = $_SESSION['login'];
+
+        $sql = "SELECT nom_cours, note FROM note WHERE login = :login";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':login', $login, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $data = [];
+        $courseData = [];
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $courseName = $row['nom_cours'];
+            $note = (float)$row['note'];
+
+            // Vérifier si le cours existe déjà dans $courseData
+            if (array_key_exists($courseName, $courseData)) {
+                // Ajouter la note au cours existant
+                $courseData[$courseName]['sum'] += $note;
+                $courseData[$courseName]['count'] += 1;
+            } else {
+                // Créer une nouvelle entrée pour le cours
+                $courseData[$courseName] = ['sum' => $note, 'count' => 1];
+            }
+        }
+
+        // Construire la structure JSON
+        $axesData = [];
+        foreach ($courseData as $courseName => $values) {
+            $average = $values['sum'] / $values['count'];
+
+            // Ajouter un axe pour chaque cours
+            $axesData[] = ['axis' => $courseName, 'value' => $average];
+        }
+
+        $json_data = json_encode([['className' => 'germany', 'axes' => $axesData]], JSON_NUMERIC_CHECK);
+    } else {
+        // Rediriger l'utilisateur vers la page de connexion s'il n'est pas connecté
+        header("Location: login.php");
+        exit();
+    }
+    ?>
 </head>
 
 <body>
-
-
-
     <header>
         <!-- Header téléphone/tablettes -->
         <nav class="phonetabheader">
-            <a href="" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png"
-                    alt="Retourner à l'accueil (page actuelle)"></a>
+            <a href="" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png" alt="Retourner à l'accueil (page actuelle)"></a>
             <div class="headergroupphone">
                 <a href="" class="darkm">☀️</a>
                 <img src="./img/burger_menu.png" alt="" id="button">
@@ -99,18 +149,7 @@
         <h1 class="titre-note">Notes</h1>
         <div class="chart-container"></div>
         <script>
-            var data = [
-                {
-                    className: 'germany', // optional can be used for styling
-                    axes: [
-                        { axis: "Dev.WEB", value: 13 },
-                        { axis: "Créa.Numérique", value: 6 },
-                        { axis: "Culture Numérique", value: 5 },
-                        { axis: "Marketing", value: 9 },
-                        { axis: "Traitement d'informations", value: 2 }
-                    ]
-                },
-            ];
+            var data = <?php echo $json_data; ?>;
             RadarChart.draw(".chart-container", data);
         </script>
         <h2 class="titre-note-detail">Notes détaillées</h2>
@@ -121,7 +160,7 @@
             <p>Eval du 17/11 - Note : 1.375986/20</p>
             <p>Eval du 17/11 - Note : 1.375986/20</p>
         </div>
-        </section>
+    </section>
     <footer>
         <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
         <div class="footwrapper">
@@ -136,3 +175,5 @@
         </div>
     </footer>
 </body>
+
+</html>

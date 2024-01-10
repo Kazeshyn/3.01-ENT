@@ -114,7 +114,7 @@
 
 
     <main>
-    <h1>Actualités </h1>
+    <h1>Actualités</h1>
     <!-- Ajout le bouton si l'admin est connecté -->
     <section class="option">
         <?php if ($isAdmin): ?>
