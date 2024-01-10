@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
     <script src="script-burger.js" defer></script>
     <script src="script-sidenav.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="./img/logoUniversite2.png">
     <?php
     session_start();
     include 'connexion.php';
@@ -42,7 +43,7 @@
         <nav class="phonetabheader">
             <a href="./accueil.php" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png" alt="Retourner à l'accueil (page actuelle)"></a>
             <div class="headergroupphone">
-                <a href="" class="darkm">☀️</a>
+                <a href="./pasCree.html" class="darkm">☀️</a>
                 <img src="./img/burger_menu.png" alt="" id="button">
             </div>
         </nav>
@@ -59,7 +60,7 @@
             <div class="burgerwrapper">
                 <a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/" class="navlink">Bibliothèque de ressources</a>
                 <a href="https://etudiant.u-pem.fr/ent-services.php" class="navlink">Mes fichiers</a>
-                <a href="" class="navlink">Tutoriels</a>
+                <a href="./pasCree.html" class="navlink">Tutoriels</a>
                 <a href="./reservation.php" class="navlink">Réservations</a>
             </div>
             <p class="burgerprewrapper">Cours</p>
@@ -84,18 +85,18 @@
                             <li><a href="./actu.php">Actualité</a></li>
                         </ul>
                     </li>
-                    <li class="align"><a href="#" class="linkcolor navlink">Restauration</a></li>
+                    <li class="align"><a href="./restauration.php" class="linkcolor navlink">Restauration</a></li>
                     <li class="deroulant align"><a href="#" class="linkcolor navlink">Ressources &ensp;</a>
                         <ul class="sous">
                             <li><a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/">Bibliothèque de ressources</a></li>
-                            <li><a href="#">Tutoriels</a></li>
+                            <li><a href="./pasCree.html">Tutoriels</a></li>
                             <li><a href="https://etudiant.u-pem.fr/ent-services.php">Mes fichiers</a></li>
                         </ul>
                     </li>
 
                     <li class="align"><a href="./accueil.php"><img src="./img/logoUniversite2.png" alt=""></a></li>
 
-                    <li class="align"><a href="#" class="linkcolor navlink">Reservation</a></li>
+                    <li class="align"><a href="./reservation.php" class="linkcolor navlink">Reservation</a></li>
                     <li class="deroulant align"><a href="#" class="linkcolor navlink">Cours &ensp;</a>
                         <ul class="sous">
                             <li><a href="https://elearning.univ-eiffel.fr/my/">Cours</a></li>
@@ -139,7 +140,7 @@
         <!-- Boutons -->
         <div class="gridcontent">
             <div class="gridbuttons">
-                <a href="" class="buttonlink">
+                <a href="https://www.partage.univ-eiffel.fr/mail" class="buttonlink">
                     <img src="./img/Placeholder Circle.png" alt="" class="icons">
                     <h2 class="titlelink">Mail</h2>
                     <p></p>
@@ -149,12 +150,12 @@
                     <h2 class="titlelink">Cours</h2>
                     <p></p>
                 </a>
-                <a href="" class="buttonlink">
+                <a href="./reservation.php" class="buttonlink">
                     <img src="./img/Placeholder Circle.png" alt="" class="icons">
                     <h2 class="titlelink">Réservations</h2>
                     <p></p>
                 </a>
-                <a href="" class="buttonlink">
+                <a href="./note.php" class="buttonlink">
                     <img src="./img/Placeholder Circle.png" alt="" class="icons">
                     <h2 class="titlelink">Notes</h2>
                     <p></p>
@@ -176,9 +177,9 @@
             <a href="https://www.facebook.com/MDEUGE/?locale=fr_FR" class="linkfooter" target="_blank">Maison des étudiants</a>
         </div>
         <div class="footwrapper">
-            <a href="" class="linkfooter">Mentions légales</a>
-            <a href="" class="linkfooter">Plan du site</a>
-            <a href="" class="linkfooter">A propos</a>
+            <a href="./mentionLegales.html" class="linkfooter">Mentions légales</a>
+            <a href="./pasCree.html" class="linkfooter">Plan du site</a>
+            <a href="./pasCree.html" class="linkfooter">A propos</a>
         </div>
     </footer>
 </body>

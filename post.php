@@ -45,6 +45,7 @@
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style_footerheader.css">
         <link rel="stylesheet" href="style_post.css">
+        <link rel="icon" type="image/x-icon" href="./img/logoUniversite2.png">
         <title><?= $result["titre_post"]?> - Blog</title>
     </head>
     <body>
@@ -189,17 +190,17 @@
             </div>
         </main>
         <footer>
-            <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
-            <div class="footwrapper">
-                <a href="" class="linkfooter">Site de l'université</a>
-                <a href="" class="linkfooter">Réseau des anciens</a>
-                <a href="" class="linkfooter">Maison des étudiants</a>
-            </div>
-            <div class="footwrapper">
-                <a href="" class="linkfooter">Mentions légales</a>
-                <a href="" class="linkfooter">Plan du site</a>
-                <a href="" class="linkfooter">A propos</a>
-            </div>
+        <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
+        <div class="footwrapper">
+            <a href="https://www.univ-gustave-eiffel.fr" class="linkfooter" target="_blank">Site de l'université</a>
+            <a href="https://lcs.univ-gustave-eiffel.fr/vie-etudiante/reseaux-detudiants/reseaux-anciens-etudiants" class="linkfooter" target="_blank">Réseau des anciens</a>
+            <a href="https://www.facebook.com/MDEUGE/?locale=fr_FR" class="linkfooter" target="_blank">Maison des étudiants</a>
+        </div>
+        <div class="footwrapper">
+            <a href="mentionLegales.html" class="linkfooter">Mentions légales</a>
+            <a href="plansite.html" class="linkfooter">Plan du site</a>
+            <a href="apropos.html" class="linkfooter">A propos</a>
+        </div>
         </footer>
     </body>
 </html>

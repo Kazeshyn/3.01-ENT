@@ -1,0 +1,31 @@
+main {
+    font-family: 'M PLUS 1p', sans-serif;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 40px;
+    min-height: 65vh;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h2 {
+    margin-bottom: 5px;
+}
+
+p {
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+a {
+    color: #000;
+}
+
+#plan {
+    text-align: center;
+    list-style: none;
+}

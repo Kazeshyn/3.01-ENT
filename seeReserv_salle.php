@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 
 <?php
+    include 'connexion.php';
     session_start();
+
+    $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
+
 ?>
 
 <html lang="fr">
@@ -12,9 +16,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style_footerheader.css">
-        <link rel="stylesheet" href="style_addActu.css">
+        <link rel="stylesheet" href="style_actu.css">
         <link rel="icon" type="image/x-icon" href="./img/logoUniversite2.png">
-        <title>Ajouter un post au forum à l'ENT</title>
+        <title>Réservations - ENT</title>
+
+        <script src="script-burger.js" defer></script>
     </head>
 
     <body>
@@ -40,7 +46,7 @@
             <div class="burgerwrapper">
                 <a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/" class="navlink">Bibliothèque de ressources</a>
                 <a href="https://etudiant.u-pem.fr/ent-services.php" class="navlink">Mes fichiers</a>
-                <a href="./pasCree.html" class="navlink">Tutoriels</a>
+                <a href="" class="navlink">Tutoriels</a>
                 <a href="./reservation.php" class="navlink">Réservations</a>
             </div>
             <p class="burgerprewrapper">Cours</p>
@@ -69,7 +75,7 @@
                     <li class="deroulant align"><a href="#" class="linkcolor navlink">Ressources &ensp;</a>
                         <ul class="sous">
                             <li><a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/">Bibliothèque de ressources</a></li>
-                            <li><a href="./pasCree.html">Tutoriels</a></li>
+                            <li><a href="#">Tutoriels</a></li>
                             <li><a href="https://etudiant.u-pem.fr/ent-services.php">Mes fichiers</a></li>
                         </ul>
                     </li>
@@ -90,30 +96,65 @@
             </div>
         </nav>
     </header>
-        <main>
-            <p><a id="retour" href="forum.php">Retour au forum</a></p>
 
-            <h1>Ajouter un post !</h1>
-            <form action="traitePost.php" method="post">
-                <input type="hidden" name="id_utilisateur" value="<?php echo $_SESSION['id_utilisateur'];?>">
-                <br><label for="titre">Titre :</label>
-                <br><input id="titre" type=text name="titre" required>
-                <br><label for="categorie">Catégorie :</label>
-                <br><select name="categorie" id="categorie">
-                    <option value="">--- Catégorie ---</option>
-                    <option value="cours">Cours</option>
-                    <option value="sortie">Sortie</option>
-                    <option value="tuto">Tuto</option>
-                    <option value="sport">Sport</option>
-                    <option value="repas">Repas</option>
-                    </select>
-                <br>
-                <br><label for="contenu">Contenu :</label>
-                <br><textarea id="contenu" name="contenu" required></textarea>
-                <br>
-                <br><input id="submit" type=submit value= "OK">
-            </form>
-        </main>
+
+    <main>
+    <p><a id="retour" href="reserv_salle.php">Retour au formulaire</a></p>
+    <h1>Réservations salles faites </h1>
+
+    <section>
+        <?php
+            $requete = "SELECT * FROM reservation_salle ORDER BY date_debut_s DESC";
+            $stmt = $pdo->prepare($requete);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+
+            // Afficher les actualités filtrées
+            foreach ($result as $reserv) { 
+                $id_utilisateur = $reserv["id_utilisateur"];
+            
+                $requete_utilisateur = "SELECT * FROM utilisateur WHERE id_utilisateur = $id_utilisateur";
+                $stmt_utilisateur = $pdo->prepare($requete_utilisateur);
+                $stmt_utilisateur->execute();
+            
+                // Vérifiez si la requête a réussi avant d'accéder aux résultats
+                if ($stmt_utilisateur->rowCount() > 0) {
+                    $info_user = $stmt_utilisateur->fetch();
+            
+                    $id_salle= $reserv["id_salle"];
+                    $requete_salle = "SELECT * FROM salle WHERE id_salle = $id_salle";
+                    $stmt_salle = $pdo->prepare($requete_salle);
+                    $stmt_salle->execute();
+            
+                    // Vérifiez si la requête a réussi avant d'accéder aux résultats
+                    if ($stmt_salle->rowCount() > 0) {
+                        $info_salle = $stmt_salle->fetch();
+            ?>
+                        <article>
+                            <div class="text">
+                                <h2><?= $info_user["nom"] ?>  <?= $info_user["prenom"] ?></h2>
+                                <p><i><?= $reserv["date_debut_s"] ?></i></p>
+                                <p><i><?= $reserv["horaire_debut_s"] ?></i></p>
+                                <p><i><?= $reserv["date_fin_s"] ?></i></p>
+                                <p><i><?= $reserv["horaire_fin_s"] ?></i></p>
+                                <p><?= $info_mat["numero_salle"] ?> </p>
+                            </div>
+                        </article>
+            <?php
+                    } else {
+                        // Gérez le cas où la requête pour le matériel n'a pas renvoyé de résultats
+                    }
+                } else {
+                    // Gérez le cas où la requête pour l'utilisateur n'a pas renvoyé de résultats
+                }
+            }
+
+            ?>
+            
+    </section>
+</main>
+
+
         <footer>
         <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
         <div class="footwrapper">

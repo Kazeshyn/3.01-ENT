@@ -20,6 +20,7 @@
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style_footerheader.css">
         <link rel="stylesheet" href="style_forum.css">
+        <link rel="icon" type="image/x-icon" href="./img/logoUniversite2.png">
         <title>Forum - ENT</title>
 
         <script src="script-burger.js" defer></script>
@@ -60,7 +61,7 @@
             <div class="burgerwrapper">
                 <a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/" class="navlink">Bibliothèque de ressources</a>
                 <a href="https://etudiant.u-pem.fr/ent-services.php" class="navlink">Mes fichiers</a>
-                <a href="" class="navlink">Tutoriels</a>
+                <a href="./pasCree.html" class="navlink">Tutoriels</a>
                 <a href="./reservation.php" class="navlink">Réservations</a>
             </div>
             <p class="burgerprewrapper">Cours</p>
@@ -89,7 +90,7 @@
                     <li class="deroulant align"><a href="#" class="linkcolor navlink">Ressources &ensp;</a>
                         <ul class="sous">
                             <li><a href="https://bu.univ-gustave-eiffel.fr/collections/ressources-electroniques/de-a-a-z/">Bibliothèque de ressources</a></li>
-                            <li><a href="#">Tutoriels</a></li>
+                            <li><a href="/pasCree.html">Tutoriels</a></li>
                             <li><a href="https://etudiant.u-pem.fr/ent-services.php">Mes fichiers</a></li>
                         </ul>
                     </li>
@@ -119,6 +120,8 @@
                     <a class="add" href="addPost.php">+</a>
                     <a id="mypost" href="?filtre=MesPosts">Mes posts</a>
                 </div>
+                <?php $filtre = isset($_GET['filtre']) ? $_GET['filtre'] : ''; ?>
+
                 <form method="get" id="filtreForm" action="forum.php">
                     <select name="filtre" id="filtre" onchange="this.form.submit()">
                         <option value="" <?php echo ($filtre === '') ? 'selected' : ''; ?>>-- Filtrer par --</option>
@@ -135,7 +138,6 @@
             <section class="article">
                 <?php 
                     // Vérifier si un filtre a été sélectionné
-                    $filtre = isset($_GET['filtre']) ? $_GET['filtre'] : '';
 
                     // Construire la requête SQL en fonction du filtre et de l'utilisateur connecté
                     $requete = "SELECT * FROM post";
@@ -210,17 +212,17 @@
             </section>
         </main>
         <footer>
-            <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
-            <div class="footwrapper">
-                <a href="" class="linkfooter">Site de l'université</a>
-                <a href="" class="linkfooter">Réseau des anciens</a>
-                <a href="" class="linkfooter">Maison des étudiants</a>
-            </div>
-            <div class="footwrapper">
-                <a href="" class="linkfooter">Mentions légales</a>
-                <a href="" class="linkfooter">Plan du site</a>
-                <a href="" class="linkfooter">A propos</a>
-            </div>
+        <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
+        <div class="footwrapper">
+            <a href="https://www.univ-gustave-eiffel.fr" class="linkfooter" target="_blank">Site de l'université</a>
+            <a href="https://lcs.univ-gustave-eiffel.fr/vie-etudiante/reseaux-detudiants/reseaux-anciens-etudiants" class="linkfooter" target="_blank">Réseau des anciens</a>
+            <a href="https://www.facebook.com/MDEUGE/?locale=fr_FR" class="linkfooter" target="_blank">Maison des étudiants</a>
+        </div>
+        <div class="footwrapper">
+            <a href="mentionLegales.html" class="linkfooter">Mentions légales</a>
+            <a href="plansite.html" class="linkfooter">Plan du site</a>
+            <a href="apropos.html" class="linkfooter">A propos</a>
+        </div>
         </footer>
     </body>
     <script>

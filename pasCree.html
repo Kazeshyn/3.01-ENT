@@ -1,23 +1,13 @@
+
 <!DOCTYPE html>
-
-<?php
-    session_start();
-?>
-
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style_footerheader.css">
-        <link rel="stylesheet" href="style_addActu.css">
-        <link rel="icon" type="image/x-icon" href="./img/logoUniversite2.png">
-        <title>Ajouter un post au forum à l'ENT</title>
-    </head>
-
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/logoUniversite2.png">
+    <title>Page pas créer </title>
+</head>
+<body>
     <header>
         <!-- Header téléphone/tablettes -->
         <nav class="phonetabheader">
@@ -89,32 +79,15 @@
                 </ul>
             </div>
         </nav>
-    </header>
-        <main>
-            <p><a id="retour" href="forum.php">Retour au forum</a></p>
+    
+</header>
+    <main>
 
-            <h1>Ajouter un post !</h1>
-            <form action="traitePost.php" method="post">
-                <input type="hidden" name="id_utilisateur" value="<?php echo $_SESSION['id_utilisateur'];?>">
-                <br><label for="titre">Titre :</label>
-                <br><input id="titre" type=text name="titre" required>
-                <br><label for="categorie">Catégorie :</label>
-                <br><select name="categorie" id="categorie">
-                    <option value="">--- Catégorie ---</option>
-                    <option value="cours">Cours</option>
-                    <option value="sortie">Sortie</option>
-                    <option value="tuto">Tuto</option>
-                    <option value="sport">Sport</option>
-                    <option value="repas">Repas</option>
-                    </select>
-                <br>
-                <br><label for="contenu">Contenu :</label>
-                <br><textarea id="contenu" name="contenu" required></textarea>
-                <br>
-                <br><input id="submit" type=submit value= "OK">
-            </form>
-        </main>
-        <footer>
+    </main>
+    <a href="accueil.php">Retourner à l'accueil</a>
+    <h1>Cette page n'a pas été créé ! </h1>
+    <img src="./img/sorry.jpg" alt="">
+    <footer>
         <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
         <div class="footwrapper">
             <a href="https://www.univ-gustave-eiffel.fr" class="linkfooter" target="_blank">Site de l'université</a>
@@ -127,5 +100,5 @@
             <a href="apropos.html" class="linkfooter">A propos</a>
         </div>
         </footer>
-    </body>
+</body>
 </html>

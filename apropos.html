@@ -1,72 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note</title>
-    <link rel="stylesheet" href="style_note.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style_footerheader.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css">
-    <script src="http://d3js.org/d3.v3.js"></script>
-    <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
-    <?php
-    session_start(); // Démarrer la session
-    include ('connexion.php');
-
-    // Vérifier si l'utilisateur est connecté
-    if (isset($_SESSION['login'])) {
-        $login = $_SESSION['login'];
-
-        $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
-
-        $sql = "SELECT nom_cours, note FROM note WHERE login = :login";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':login', $login, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $data = [];
-        $courseData = [];
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $courseName = $row['nom_cours'];
-            $note = (float)$row['note'];
-
-            // Vérifier si le cours existe déjà dans $courseData
-            if (array_key_exists($courseName, $courseData)) {
-                // Ajouter la note au cours existant
-                $courseData[$courseName]['sum'] += $note;
-                $courseData[$courseName]['count'] += 1;
-            } else {
-                // Créer une nouvelle entrée pour le cours
-                $courseData[$courseName] = ['sum' => $note, 'count' => 1];
-            }
-        }
-
-        // Construire la structure JSON
-        $axesData = [];
-        foreach ($courseData as $courseName => $values) {
-            $average = $values['sum'] / $values['count'];
-
-            // Ajouter un axe pour chaque cours
-            $axesData[] = ['axis' => $courseName, 'value' => $average];
-        }
-
-        $json_data = json_encode([['className' => 'germany', 'axes' => $axesData]], JSON_NUMERIC_CHECK);
-    } else {
-        // Rediriger l'utilisateur vers la page de connexion s'il n'est pas connecté
-        header("Location: login.php");
-        exit();
-    }
-    ?>
+    <link rel="stylesheet" href="style_mention.css">
+    <script src="./lib/d3.js"></script>
+    <script src="./lib/gsap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="./img/logoUniversite2.png">
+    <title>A propos - ENT</title>
 </head>
-
 <body>
-    
-<header>
+    <header>      
+        
             <!-- Header téléphone/tablettes -->
             <nav class="phonetabheader">
                 <a href="./accueil.php" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png" alt="Retourner à l'accueil (page actuelle)"></a>
@@ -139,63 +88,15 @@
             </nav>
         
     </header>
-       
-    <section>
-        <h1 class="titre-note">Notes</h1>
-        <div class="chart-container"></div>
-        <script>
-            var data = <?php echo $json_data; ?>;
-            RadarChart.draw(".chart-container", data);
-        </script>
-        <h2 class="titre-note-detail">Notes détaillées</h2>
-        <div class="note-detail">
-            <?php
-            // Récupérer les notes de l'utilisateur connecté
-            $sql_notes_utilisateur = "SELECT nom_cours, note, detail_note FROM note WHERE login = :login";
-            $stmt_notes_utilisateur = $pdo->prepare($sql_notes_utilisateur);
-            $stmt_notes_utilisateur->bindParam(':login', $login, PDO::PARAM_STR);
-            $stmt_notes_utilisateur->execute();
 
-            while ($row_note = $stmt_notes_utilisateur->fetch(PDO::FETCH_ASSOC)) {
-                $nom_cours = $row_note['nom_cours'];
-                $note_utilisateur = $row_note['note'];
-                $detail_note = $row_note['detail_note'];
 
-                // Afficher le détail de la note avant la matière
-                echo "<p>$detail_note - $nom_cours - $note_utilisateur/20</p>";
-            }
-            ?>
-        </div>
-        </div>
-        <?php if ($isAdmin) : ?>
-            <h2 class="titre-note-detail">Insérer une note :</h1>
-                <form action="traiteNote.php" method="post"> <!-- Ajout de method="post" -->
-                    <label for="matiere">Matière :</label>
-                    <br><select name="matiere" id="matiere">
-                        <<option value="Intégration">Intégration</option>
-                            <option value="C.numérique">Culture Numérique</option>
-                            <option value="anglais">Anglais</option>
-                            <option value="audiovisuel">Audiovisuel</option>
-                            <option value="D.WEB">Developpement Web</option>
-                            <option value="Graphisme">Production Graphique</option>
-                            <option value="C.Artistique">Culture Artistique</option>
-                            <option value="D.back">Développement Back</option>
-                    </select>
-                    <br>
-                    <label for="login">Nom de l'élève :</label>
-                    <br><input type="text" name="login" required> <!-- Ajout de name="login" -->
-                    <br>
-                    <label for="note">Note :</label>
-                    <br><input type="number" name="note" required><br>
-                    <label for="detail">Détails :</label>
-                    <br><input type="text" name="detail" required><br>
-                    <!-- Ajout de name="note" et type="number" -->
-                    <input type="submit">
-                </form>
-            <?php endif; ?>
-    </section>
+    <main>
+        <h1>A propos</h1>
+        <p>Ce site a été réalisé dans le cadre d'un projet étudiant par groupe. Le groupe qui a réalisé ce site est composé de Idriss MEROUANE, Nahina BOIREAU et Lou-Anne DUBILLE</p>
+    </main>
+
     <footer>
-    <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
+        <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
         <div class="footwrapper">
             <a href="https://www.univ-gustave-eiffel.fr" class="linkfooter" target="_blank">Site de l'université</a>
             <a href="https://lcs.univ-gustave-eiffel.fr/vie-etudiante/reseaux-detudiants/reseaux-anciens-etudiants" class="linkfooter" target="_blank">Réseau des anciens</a>
@@ -207,6 +108,6 @@
             <a href="apropos.html" class="linkfooter">A propos</a>
         </div>
     </footer>
+    
 </body>
-
 </html>

@@ -1,6 +1,7 @@
 <?php
 include "connexion.php";
 session_start();
+$isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +15,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style_footerheader.css">
     <link rel="stylesheet" href="style_reservation.css">
+    <link rel="icon" type="image/x-icon" href="./img/logoUniversite2.png">
 
     <title>Réservations - ENT</title>
 </head>
@@ -96,6 +98,9 @@ session_start();
     <main class="reserver">
 
         <h1>Reservation de salle</h1>
+        <?php if ($isAdmin): ?>
+                <a id="seeReserv" href="seeReserv_salle.php">Voir toutes les réservations</a>
+    <?php endif; ?>
         <?php
         // Vérifier si l'utilisateur est connecté
         if (isset($_SESSION['id_utilisateur'])) {
@@ -138,16 +143,16 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
     </main>
     <footer>
-        <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
+    <a href="" class="logoheader"><img src="./img/logoUniversite2.png" alt="" class="logoheader"></a>
         <div class="footwrapper">
-            <a href="" class="linkfooter">Site de l'université</a>
-            <a href="" class="linkfooter">Réseau des anciens</a>
-            <a href="" class="linkfooter">Maison des étudiants</a>
+            <a href="https://www.univ-gustave-eiffel.fr" class="linkfooter" target="_blank">Site de l'université</a>
+            <a href="https://lcs.univ-gustave-eiffel.fr/vie-etudiante/reseaux-detudiants/reseaux-anciens-etudiants" class="linkfooter" target="_blank">Réseau des anciens</a>
+            <a href="https://www.facebook.com/MDEUGE/?locale=fr_FR" class="linkfooter" target="_blank">Maison des étudiants</a>
         </div>
         <div class="footwrapper">
-            <a href="" class="linkfooter">Mentions légales</a>
-            <a href="" class="linkfooter">Plan du site</a>
-            <a href="" class="linkfooter">A propos</a>
+            <a href="mentionLegales.html" class="linkfooter">Mentions légales</a>
+            <a href="plansite.html" class="linkfooter">Plan du site</a>
+            <a href="apropos.html" class="linkfooter">A propos</a>
         </div>
     </footer>
     <script src="script-burger.js"></script>
