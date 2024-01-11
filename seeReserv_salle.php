@@ -137,7 +137,7 @@
                 <p><i><?= $reserv["horaire_debut_s"] ?></i></p>
                 <p><i><?= $reserv["date_fin_s"] ?></i></p>
                 <p><i><?= $reserv["horaire_fin_s"] ?></i></p>
-                <p><?= $numero["numero_salle"] ?> </p> <!-- Utilisez $info_salle au lieu de $info_mat -->
+                <p><?= $info_salle["numero_salle"] ?> </p> <!-- Utilisez $info_salle au lieu de $info_mat -->
             </div>
         </article>
             <?php

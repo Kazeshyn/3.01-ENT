@@ -21,7 +21,8 @@ $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
 </head>
 
 <body>
-<header>
+<header>.
+    
         <!-- Header téléphone/tablettes -->
         <nav class="phonetabheader">
             <a href="./accueil.php" class="logoheader"><img class="logoheader" src="./img/logoUniversite2.png" alt="Retourner à l'accueil (page actuelle)"></a>
